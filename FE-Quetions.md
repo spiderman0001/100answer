@@ -41,6 +41,7 @@
 - 逐级访问，未找到会抛异常
 
 #### 5、继承与原型链
+- 继承的几种方式
 
 - {} 的原型是 Object.prototype
 - Object 的原型是 Function.prototype
@@ -59,7 +60,7 @@
 - 配合正则使用的方法有哪些，场景与性能 (split, replace, match, search, exec, test)
 - 贪婪模式，如何开启(*, +, {1, })
 - 分组()，具名分组(?<>)，非捕获分组(?:) ，正向前瞻(?=)与负向前瞻(?!)
-- 11 位手机号校验正则
+- 11 位手机号校验正则 & 网址匹配
 - emoji 过滤
 - url 参数提取
 
@@ -108,8 +109,10 @@
 
 - 纯函数与副作用的概念
 -  柯里化
+    [example](https://github.com/mqyqingfeng/Blog/issues/42)
 - 函数组合
 - 高阶函数 map, reduce
+    
 - 常用的函数式编程的库 lodash/fp
 
 #### 11、Node
@@ -117,16 +120,21 @@
 - node 模块查找机制与加载，模块缓存
 - 如何读取环境变量与运行参数
 - stream
+    - Writable
+    - Readable
+    - Duplex and Transform Streams
 - buffer
 - npm 与 yarn, lock 文件的用处
 - 包版本管理，如何发包
 - C++扩展 与 NAPIb
 - 进程运行异常捕获，进程退出
 - 子进程与进程通信
+    -如何创建子进程
 - cluster 工作机制
 - Koa & Express 中间件模型与工作机制
 - Node 应用 APM
 - CLI 编写
+- [element node interview](https://github.com/ElemeFE/node-interview)
 
 #### 12、设计模式
 
@@ -191,7 +199,7 @@ arguments不会自动反映函数参数的变化
 - 伪类选择器
 - 常用选择器组合（猫头鹰选择器解决首尾分割线），grid 中间分割线
 
-#### 3、伪元素
+#### 3、伪类 & 伪元素
 
 - 使用场景
 - content: attr()
@@ -265,7 +273,7 @@ arguments不会自动反映函数参数的变化
 
 #### 13、z-index
 
--  层叠关系确定
+- 层叠关系确定
 - 与定位关系
 - 如何实现永远在最上层的模态框
 
@@ -329,10 +337,13 @@ arguments不会自动反映函数参数的变化
 - scrollingElement
 - getElementById 与 querySelector
 - NodeList 与 HtmlElement
-- 如何获取元素相较于父元素和主文档  以及屏幕窗口 offset & scrollOffset
+- 如何获取元素相较于父元素和主文档  以及屏幕窗口 offset & scroll offset  client
+    getBoundingClientRect
+
 - childList 与 children
 - createElement、createDocumentFragment 的区别
 - window
+- 操作DOM常用方法
 
 #### 4、SVG
 
@@ -349,13 +360,14 @@ arguments不会自动反映函数参数的变化
 - 表单校验， 阻止提交
 - 如何设计表单校验工具类以满足复合校验
 
-#### 6、LocalStorage， sessionStorage, Cookie
+#### 6、LocalStorage， sessionStorage, Cookie, indexedDB
 
 - 区别于使用场景
 - 跨域
 - 设置 cookie 作用域与过期
 - 如何用 localStorage 做静态资源离线化
 - Cookie http only
+- Cookie跨域携带 withCredentials
 
 #### 7、跨域与 CORS
 
@@ -368,6 +380,7 @@ arguments不会自动反映函数参数的变化
 - CORS 简单请求与非简单请求的处理
 - CORS 下的 301
 - CORS 下的脚本异常捕获
+- 服务端代理跨域
 
 #### 8、Web Worker
 
@@ -388,14 +401,15 @@ arguments不会自动反映函数参数的变化
 - 事件的阶段
 - event target, event currentTarget
 - 注册与清除注册
--  事件冒泡与事件捕获
+- 事件冒泡与事件捕获
 - passive event
 - 事件代理（事件合成）
 - 自定义事件
 - 浏览器事件（onload, domContentLoaded, domInteractive）
 
 #### 11、其他
-
+- new创建对象的经历的几个步骤
+- 图片上传
 - 空格渲染策略
 - defer, async
 - 转义与 XSS
@@ -406,6 +420,7 @@ arguments不会自动反映函数参数的变化
 - Performance API
 - 定时器与动画
 - AJAX
+    - 原生js创建xhr经历几个步骤
 - fetch API
 - Canvas 与 SVG
 - WebGL
@@ -466,6 +481,7 @@ Cookie
 #### 2、TCP
 
 - 连接建立过程
+    - 三次握手 四次挥手
 - 可靠  传输原理
 - 拥塞控制
 - 流量控制
@@ -567,6 +583,7 @@ Cookie
 - 父子 props, event
 - 跨级 event bus 或者 Rxjs
 - 复杂状态 Vuex
+- provide / inject
 
 #### 8、 Vue Transition 原理及应用
 
@@ -613,6 +630,7 @@ Cookie
 #### 15、React Class Based Component 的好处
 
 - 易继承扩展，复用度高
+- React constructor里面为什么要加super(props)
 
 #### 16、 React 组件生命周期 Hook
 
@@ -641,7 +659,8 @@ Cookie
 #### 28、VDom 的 Diff 算法
 
 #### 29、Redux 思想与最佳实践
-
+- 中间件
+- store的传递过程
 ### 前端工程
 
 #### Gulp
@@ -658,6 +677,8 @@ Cookie
 -  构建性能优化
 - 构建时注入
 - Code Splitting
+- 优化手段
+
 
 #### Babel
 
@@ -699,3 +720,11 @@ Cookie
 - 上传
 - 部署 CDN
 - 清理 CDN 缓存
+
+#### Electron
+
+#### 常见题目：
+- 浏览器从输入url都做了什么事
+- 写一个深拷贝函数
+- 二分查找
+- 树的翻转（左旋右旋）
