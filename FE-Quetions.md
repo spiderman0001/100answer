@@ -692,15 +692,12 @@ Cookie
 #### 28、VDom 的 Diff 算法
 
 #### 29、Redux 思想与最佳实践
-<<<<<<< HEAD
 - 中间件
 - store的传递过程
-=======
 - action
 - reducers
 - 单一数据源（store）
 
->>>>>>> d649974c838d3ffe99f0aa1e2c694353933f310f
 ### 前端工程
 
 #### Gulp
