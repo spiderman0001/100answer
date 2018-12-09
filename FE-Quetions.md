@@ -15,7 +15,7 @@
 - 函数调用(global)，方法调用(object)
 - 事件回调(触发事件的 DOM 对象)
 - bind, apply, call
-- 箭头函数的this指向
+- 箭头函数的 this 指向
 
 #### 3、基本类型与引用类型及相互转化
 
@@ -35,7 +35,7 @@
 #### 4、变量作用域机制
 
 - 全局作用域
-- 函数作用域
+-  函数作用域
 - 块级作用域 let, const , {}
 - 变量声明提升
 - 逐级访问，未找到会抛异常
@@ -57,7 +57,7 @@
 - 正则表达式对象是何时构建出来的
 - 有哪些 flag，分别是如何工作的
 - 配合正则使用的方法有哪些，场景与性能 (split, replace, match, search, exec, test)
-- 贪婪模式，如何开启(*, +, {1, })
+- 贪婪模式，如何开启(\*, +, {1, })
 - 分组()，具名分组(?<>)，非捕获分组(?:) ，正向前瞻(?=)与负向前瞻(?!)
 - 11 位手机号校验正则
 - emoji 过滤
@@ -66,7 +66,7 @@
 #### 7、EventLoop & 异步机制（Node、Browser）
 
 - 浏览器异步机制
-- 常用异步函数及执行时机
+-  常用异步函数及执行时机
 - Node 的 EventLoop
 - setImmediate 与 process.nextTick
 - lazyMan
@@ -616,38 +616,74 @@ Cookie
 
 #### 16、 React 组件生命周期 Hook
 
+- componentWillxxx
+- componentShouldxxx
+- componentDidxxx
+
 #### 17、 React 如何触发渲染
+
+- setState, 异步, 合并与覆盖
 
 #### 18、 React 合成事件与事件处理
 
+- 事件代理机制
+
 #### 19、 React 组件的组合与继承
+
+- extends 用于集成，this 在 super(pros)才可用
+- 组合：组件通过逻辑判断渲染哪个或哪些组件
 
 #### 20、 React PureComponent 与 Component 的区别
 
+- setState 时只做浅比较
+- PureComponent 不建议有 state
+- PureComponent 性能能好，通常用于容器逻辑组件，无状态组件 
+
 #### 21、 React 组件 defaultProps 与 propTypes
+
+- 组件 props 类型校验  与默认值
 
 #### 22、 React 组件的通信
 
+- props（值与 function 回调，注意回调中对的 this）
+- Context API
+
 #### 23、 React 组件的渲染性能优化
+
+- componentShouldUpdate 中进行判断
+- 尽量合并 setState 操作
+- 指定 key 以复用组件
 
 #### 24、 React Context API
 
 #### 25、 React Context Hooks API
 
-#### 26、 React 高阶组件  及场景
+#### 26、 React 高阶组件及场景
+
+- 权限校验
+- 组件定制
+- 通过 props 生成新组件而不是改传入的组件
 
 #### 27、VDom 的原理
+
+- createHtmlFragment 一次插进 dom 减少 dom 操作
+- 内存中维护一个与 Dom 树对应的树结构， 操作只更改 vdom，需要渲染才将差异部分  渲染出来
+- 不依赖实际 DOM，却可以生成 DOM
+- 可用于服务端渲染出 HTML 结构
 
 #### 28、VDom 的 Diff 算法
 
 #### 29、Redux 思想与最佳实践
+- action
+- reducers
+- 单一数据源（store）
 
 ### 前端工程
 
 #### Gulp
 
 - 流操作
-- 基于任务
+- 任务
 
 #### Webpack
 
@@ -661,18 +697,56 @@ Cookie
 
 #### Babel
 
+- AST
+- preset
+- plugins
+
 #### ESLint
+
+- rules
+- parser setting
 
 #### StyleLint
 
+- rules
+
 #### HTTP 库，Util 库，组件库等。
+
+- jQuery
+- Axios
+- lodash
+- ElementUI
+- Ant Design
+- popmotion(动画)
+- animate.css（css 动画）
+- normalize.css（css reset）
+- glob
+- shellJs
+- inquirer（cli 交互）
+- moment
+- query-string
+- anime.js (动画)
 
 #### Post-CSS
 
 - cssnano
 - autoprefixer
 
-#### 工程框架，脚手架库，组件库，页面模板 CLI
+#### 工程框架
+
+- utils & helpers
+- 构建配置
+- linter 配置文件
+- npm scripts
+- 页面模板生成器
+- sass mixins, functions
+- page bootstrap 脚本
+-  页面  异常处理工具
+- 页面性能分析上报
+- 页面打点统计工具
+- Node 服务压测工具
+- Node 日志处理
+- Node 进程运行统计分析工具
 
 #### NPM & Yarn
 
@@ -682,9 +756,8 @@ Cookie
 
 #### 测试
 
-- 单测，Jest， Mocha
-- 覆盖率报告
-- 页面 UI 自动化测试
+- 单测，Jest， Mocha，覆盖率
+- e2e 测试，Phantomjs，puppeteer
 
 #### 前端发布 CI
 
