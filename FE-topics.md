@@ -7,7 +7,6 @@
 - 函数可以访问其声明时作用域内的变量
 - 创建私有变量
 - 模块化
-- 写一个闭包
 
 #### 2、this 以及如何改变 this 指向
 
@@ -64,9 +63,6 @@
 - 配合正则使用的方法有哪些，场景与性能 (split, replace, match, search, exec, test)
 - 贪婪模式，如何开启(\*, +, {1, })
 - 分组()，具名分组(?<>)，非捕获分组(?:) ，正向前瞻(?=)与负向前瞻(?!)
-- 11 位手机号校验正则 & 网址匹配
-- emoji 过滤
-- url 参数提取
 
 #### 7、EventLoop & 异步机制（Node、Browser）
 
@@ -74,7 +70,6 @@
 -  常用异步函数及执行时机
 - Node 的 EventLoop
 - setImmediate 与 process.nextTick
-- lazyMan
 
 #### 8、Callback & Promise & Async/Await
 
@@ -403,7 +398,7 @@ arguments不会自动反映函数参数的变化
 - 事件的阶段
 - event target, event currentTarget
 - 注册与清除注册
--  事件冒泡与事件捕获
+- 事件冒泡与事件捕获
 - passive event
 - 事件代理（事件合成）
 - 自定义事件
@@ -423,30 +418,6 @@ arguments不会自动反映函数参数的变化
 - Performance API
 - 定时器与动画
 - AJAX
-  - 原生 js 创建 xhr 经历几个步骤
-
-```javascript
-var xhr;
-try {
-  xhr = new XMLHttpRequest();
-} catch (e) {
-  xhr = new ActiveXObject();
-}
-xhr.onreadystatechange = function() {
-  // 通信成功时，状态值为4
-  if (xhr.readyState === 4) {
-    if (xhr.status === 200) {
-      console.log(xhr.responseText);
-    }
-  }
-};
-
-xhr.onerror = function(e) {};
-// true 表示异步请求
-xhr.open("GET", "/url", true);
-xhr.send(null);
-```
-
 - fetch API
 - Canvas 与 SVG
 - WebGL
@@ -830,14 +801,3 @@ Cookie
 - 上传
 - 部署 CDN
 - 清理 CDN 缓存
-
-#### 常见题目：
-
-- 浏览器从输入 url 都做了什么事
-
-![浏览器时间线](/timestamp-diagram.svg)
-
-- 写一个深拷贝函数
-[demo](./demo/deepClone.js)
-- 二分查找
-- 树的翻转（左旋右旋）
