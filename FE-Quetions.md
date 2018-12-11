@@ -18,7 +18,9 @@
 - 箭头函数的 this 指向
 
 #### 3、基本类型与引用类型及相互转化
+
 基本类型
+
 - String
 - Number
 - Boolean
@@ -27,6 +29,7 @@
 - Symbol
 
 引用类型
+
 - Object
 - 通过 Object.prototype.toString 做类型判断
 - 通过 instanceOf 判断对象是否是某个  构造器的实例
@@ -421,6 +424,29 @@ arguments不会自动反映函数参数的变化
 - 定时器与动画
 - AJAX
   - 原生 js 创建 xhr 经历几个步骤
+
+```javascript
+var xhr;
+try {
+  xhr = new XMLHttpRequest();
+} catch (e) {
+  xhr = new ActiveXObject();
+}
+xhr.onreadystatechange = function() {
+  // 通信成功时，状态值为4
+  if (xhr.readyState === 4) {
+    if (xhr.status === 200) {
+      console.log(xhr.responseText);
+    }
+  }
+};
+
+xhr.onerror = function(e) {};
+// true 表示异步请求
+xhr.open("GET", "/url", true);
+xhr.send(null);
+```
+
 - fetch API
 - Canvas 与 SVG
 - WebGL
@@ -673,11 +699,13 @@ Cookie
 - 指定 key 以复用组件
 
 #### 24、 React Context API
-- 组件共享全局数据（状态），类似于Vue provide
+
+- 组件共享全局数据（状态），类似于 Vue provide
 
 #### 25、 React Hooks API
+
 - 实验特性
-- 解决Functional Components的生命周期和逻辑复用问题
+- 解决 Functional Components 的生命周期和逻辑复用问题
 
 #### 26、 React 高阶组件及场景
 
@@ -804,7 +832,7 @@ Cookie
 
 - 浏览器从输入 url 都做了什么事
 
- ![浏览器时间线](/timestamp-diagram.svg)
+![浏览器时间线](/timestamp-diagram.svg)
 
 - 写一个深拷贝函数
 - 二分查找
