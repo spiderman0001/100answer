@@ -18,7 +18,7 @@
 - 箭头函数的 this 指向
 
 #### 3、基本类型与引用类型及相互转化
-
+基本类型
 - String
 - Number
 - Boolean
@@ -26,8 +26,8 @@
 - Undefined
 - Symbol
 
+引用类型
 - Object
-
 - 通过 Object.prototype.toString 做类型判断
 - 通过 instanceOf 判断对象是否是某个  构造器的实例
 - null 表示值为空，undefined 表示未定义或值为 undefined
@@ -41,6 +41,7 @@
 - 逐级访问，未找到会抛异常
 
 #### 5、继承与原型链
+
 - 继承的几种方式
 
 - {} 的原型是 Object.prototype
@@ -109,10 +110,9 @@
 
 - 纯函数与副作用的概念
 -  柯里化
-    [example](https://github.com/mqyqingfeng/Blog/issues/42)
+  [example](https://github.com/mqyqingfeng/Blog/issues/42)
 - 函数组合
 - 高阶函数 map, reduce
-    
 - 常用的函数式编程的库 lodash/fp
 
 #### 11、Node
@@ -120,16 +120,15 @@
 - node 模块查找机制与加载，模块缓存
 - 如何读取环境变量与运行参数
 - stream
-    - Writable
-    - Readable
-    - Duplex and Transform Streams
+  - Writable
+  - Readable
+  - Duplex and Transform Streams
 - buffer
 - npm 与 yarn, lock 文件的用处
 - 包版本管理，如何发包
-- C++扩展 与 NAPIb
+- C++扩展 与 N-API
 - 进程运行异常捕获，进程退出
-- 子进程与进程通信
-    -如何创建子进程
+- 子进程与进程通信 -如何创建子进程
 - cluster 工作机制
 - Koa & Express 中间件模型与工作机制
 - Node 应用 APM
@@ -273,7 +272,7 @@ arguments不会自动反映函数参数的变化
 
 #### 13、z-index
 
-- 层叠关系确定
+-  层叠关系确定
 - 与定位关系
 - 如何实现永远在最上层的模态框
 
@@ -337,13 +336,13 @@ arguments不会自动反映函数参数的变化
 - scrollingElement
 - getElementById 与 querySelector
 - NodeList 与 HtmlElement
-- 如何获取元素相较于父元素和主文档  以及屏幕窗口 offset & scroll offset  client
-    getBoundingClientRect
+- 如何获取元素相较于父元素和主文档  以及屏幕窗口 offset & scroll offset client
+  getBoundingClientRect
 
 - childList 与 children
 - createElement、createDocumentFragment 的区别
 - window
-- 操作DOM常用方法
+- 操作 DOM 常用方法
 
 #### 4、SVG
 
@@ -367,7 +366,7 @@ arguments不会自动反映函数参数的变化
 - 设置 cookie 作用域与过期
 - 如何用 localStorage 做静态资源离线化
 - Cookie http only
-- Cookie跨域携带 withCredentials
+- Cookie 跨域携带 withCredentials
 
 #### 7、跨域与 CORS
 
@@ -401,14 +400,15 @@ arguments不会自动反映函数参数的变化
 - 事件的阶段
 - event target, event currentTarget
 - 注册与清除注册
-- 事件冒泡与事件捕获
+-  事件冒泡与事件捕获
 - passive event
 - 事件代理（事件合成）
 - 自定义事件
 - 浏览器事件（onload, domContentLoaded, domInteractive）
 
 #### 11、其他
-- new创建对象的经历的几个步骤
+
+- new 创建对象的经历的几个步骤
 - 图片上传
 - 空格渲染策略
 - defer, async
@@ -420,7 +420,7 @@ arguments不会自动反映函数参数的变化
 - Performance API
 - 定时器与动画
 - AJAX
-    - 原生js创建xhr经历几个步骤
+  - 原生 js 创建 xhr 经历几个步骤
 - fetch API
 - Canvas 与 SVG
 - WebGL
@@ -481,7 +481,7 @@ Cookie
 #### 2、TCP
 
 - 连接建立过程
-    - 三次握手 四次挥手
+  - 三次握手 四次挥手
 - 可靠  传输原理
 - 拥塞控制
 - 流量控制
@@ -630,7 +630,7 @@ Cookie
 #### 15、React Class Based Component 的好处
 
 - 易继承扩展，复用度高
-- React constructor里面为什么要加super(props)
+- React constructor 里面为什么要加 super(props)
 
 #### 16、 React 组件生命周期 Hook
 
@@ -673,8 +673,11 @@ Cookie
 - 指定 key 以复用组件
 
 #### 24、 React Context API
+- 组件共享全局数据（状态），类似于Vue provide
 
-#### 25、 React Context Hooks API
+#### 25、 React Hooks API
+- 实验特性
+- 解决Functional Components的生命周期和逻辑复用问题
 
 #### 26、 React 高阶组件及场景
 
@@ -687,13 +690,14 @@ Cookie
 - createHtmlFragment 一次插进 dom 减少 dom 操作
 - 内存中维护一个与 Dom 树对应的树结构， 操作只更改 vdom，需要渲染才将差异部分  渲染出来
 - 不依赖实际 DOM，却可以生成 DOM
-- 可用于服务端渲染出 HTML 结构
+-  可用于服务端渲染出 HTML 结构
 
 #### 28、VDom 的 Diff 算法
 
 #### 29、Redux 思想与最佳实践
+
 - 中间件
-- store的传递过程
+- store 的传递过程
 - action
 - reducers
 - 单一数据源（store）
@@ -715,7 +719,6 @@ Cookie
 - 构建时注入
 - Code Splitting
 - 优化手段
-
 
 #### Babel
 
@@ -798,7 +801,11 @@ Cookie
 #### Electron
 
 #### 常见题目：
-- 浏览器从输入url都做了什么事
+
+- 浏览器从输入 url 都做了什么事
+
+ ![浏览器时间线](/timestamp-diagram.svg)
+
 - 写一个深拷贝函数
 - 二分查找
 - 树的翻转（左旋右旋）
