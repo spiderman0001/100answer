@@ -838,5 +838,6 @@ Cookie
 ![浏览器时间线](/timestamp-diagram.svg)
 
 - 写一个深拷贝函数
+[demo](./demo/deepClone.js)
 - 二分查找
 - 树的翻转（左旋右旋）
