@@ -420,7 +420,29 @@ arguments不会自动反映函数参数的变化
 - Performance API
 - 定时器与动画
 - AJAX
-    - 原生js创建xhr经历几个步骤
+    - AJAX经历几个步骤
+```javascript
+        var xhr 
+        try {
+            xhr= new XMLHttpRequest();
+        } catch(e) {
+            xhr = new ActiveXObject();
+        }
+        xhr.onreadystatechange = function(){
+            // 通信成功时，状态值为4
+            if (xhr.readyState === 4){
+                if (xhr.status === 200){
+                    console.log(xhr.responseText);
+                }
+            }
+        };
+
+        xhr.onerror = function (e) {
+        };
+        // true 表示异步请求
+        xhr.open('GET', '/url', true);
+        xhr.send(null);
+```
 - fetch API
 - Canvas 与 SVG
 - WebGL
