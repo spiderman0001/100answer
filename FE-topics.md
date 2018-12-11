@@ -398,7 +398,7 @@ arguments不会自动反映函数参数的变化
 - 事件的阶段
 - event target, event currentTarget
 - 注册与清除注册
-- 事件冒泡与事件捕获
+-  事件冒泡与事件捕获
 - passive event
 - 事件代理（事件合成）
 - 自定义事件
@@ -443,52 +443,59 @@ arguments不会自动反映函数参数的变化
 - 常用 Header 技巧含义
 
 ```txt
-Cache-Control
-Connection
-Date
-Via
-Accept
-Authorization
-Expect
-From
-Host
-If-Match
-If-Match-Since
-If-None-Match
-Referrer
-User-Agent
-ETag
-Server
-Vary
-Allow
-Content-type
-Expires
-Last-Modified
-Set-Cookie
+Cache-Control: no-store(无缓存)、no-cache(协商缓存)，max-age(最大缓存时长):
+Connection：连接类型
+Date：创建报文日期
+Via：代理相关信息
+Accept：可处理的媒体类型
+Authorization：web认证信息
+Host：请求资源所在服务器
+If-Match：比较实体标记（ETag）
+If-Modified-Since：比较资源更新时间
+Referrer：URI的原始获取方
+User-Agent：HTTP客户端程序的信息
+ETag：资源的匹配信息
+Server：HTTP服务器的安装信息
+Vary：代理服务器缓存的相关信息
+Allow：资源可以支持的HTTP方法
+Content-type：实体主体的媒体类型
+Expires：实体主体过期的时间
+Last-Modified：最后修改时间
+Set-Cookie：开始状态管理所使用的Cookie信息
+Cookie：服务器接收到的Cookie信息
 Cookie
 ```
 
-- 缓存策略（ 强制缓存与协商缓存）
+- 缓存策略（ [强制缓存与协商缓存](https://juejin.im/entry/5ad86c16f265da505a77dca4)）
 - RESTful
+  - GET 获取资源
+  - POST 传输实体主体
+  - PUT 传输文件
+  - DELETE 删除文件
+  - OPTIONS 获取资源支持的操作
+  - TRACE
+  - CONNECT 
+  - HEAD 获取响应头部
+  - [GET 和 POST 区别 1](https://www.oschina.net/news/77354/http-get-post-different)
+  - [GET 和 POST 区别 2](https://sunshinevvv.coding.me/blog/2017/02/09/HttpGETv.s.POST/)
 - HTTPS 链接建立过程
 - 对称加密与非对称加密
 - HTTP2 特性
-- 鉴权认证  机制（Basic, oauth2, jwt）
+- 鉴权认证机制（Basic, oauth2, jwt）
 - SSO
 
 #### 2、TCP
 
-- 连接建立过程
+- 连接建立和断开过程
   - 三次握手 四次挥手
-- 可靠  传输原理
+- 可靠传输原理
 - 拥塞控制
 - 流量控制
 
 #### 3、IP
 
-- IP 地址段
-- 局域网与广播
-- IPv6
+- IP 地址段：A B C 类，局域网段，本地回环测试
+- IPv6：64 位
 
 #### 4、DNS 与 CDN
 
