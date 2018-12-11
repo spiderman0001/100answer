@@ -453,6 +453,7 @@ xhr.send(null);
 - WebSQL
 - WebSocket
 - WebRTC
+- Electron
 - FMP, TTFB, TTL, TTI 的衡量
 
 ### CS 基础与算法
@@ -722,6 +723,10 @@ Cookie
 
 #### 28、VDom 的 Diff 算法
 
+- [Virtual DOM 背后的秘密（Diff 篇）](https://zhuanlan.zhihu.com/p/36500459)
+- [Vue VDOM](<https://github.com/answershuto/learnVue/blob/master/docs/VirtualDOM%E4%B8%8Ediff(Vue%E5%AE%9E%E7%8E%B0).MarkDown>)
+- [Vue 虚拟 DOM 原理](https://cloud.tencent.com/developer/article/1006029)
+
 #### 29、Redux 思想与最佳实践
 
 - 中间件
@@ -825,8 +830,6 @@ Cookie
 - 上传
 - 部署 CDN
 - 清理 CDN 缓存
-
-#### Electron
 
 #### 常见题目：
 
