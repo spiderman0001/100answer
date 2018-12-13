@@ -478,6 +478,7 @@ Cookie
   - HEAD 获取响应头部
   - [GET 和 POST 区别 1](https://www.oschina.net/news/77354/http-get-post-different)
   - [GET 和 POST 区别 2](https://sunshinevvv.coding.me/blog/2017/02/09/HttpGETv.s.POST/)
+  - [GET 和 POST 区别 3](https://www.zhihu.com/question/28586791)
 - HTTPS 链接建立过程
 - 对称加密与非对称加密
 - HTTP2 特性
