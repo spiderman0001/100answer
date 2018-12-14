@@ -63,7 +63,7 @@
 - 配合正则使用的方法有哪些，场景与性能 (split, replace, match, search, exec, test)
 - 贪婪模式，如何开启(\*, +, {1, })
 - 分组()，具名分组(?<>)，非捕获分组(?:) ，正向前瞻(?=)与负向前瞻(?!)
-
+- [介绍](https://juejin.im/post/5965943ff265da6c30653879)
 #### 7、EventLoop & 异步机制（Node、Browser）
 
 - 浏览器异步机制
