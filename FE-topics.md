@@ -64,6 +64,7 @@
 - 贪婪模式，如何开启(\*, +, {1, })
 - 分组()，具名分组(?<>)，非捕获分组(?:) ，正向前瞻(?=)与负向前瞻(?!)
 - [介绍](https://juejin.im/post/5965943ff265da6c30653879)
+
 #### 7、EventLoop & 异步机制（Node、Browser）
 
 - 浏览器异步机制
@@ -213,7 +214,7 @@ arguments不会自动反映函数参数的变化
 #### 5、Display
 
 - block
-- inline-block(BFC)
+- inline-block
 - flex
 - none
 - grid
@@ -320,10 +321,9 @@ arguments不会自动反映函数参数的变化
 - canvas
 - svg
 - table
-- base
-- noscript
 - form
 - 语义化标签
+- [标签列表](http://www.w3school.com.cn/tags/index.asp)
 
 #### 2、样式覆盖顺序
 
@@ -336,8 +336,7 @@ arguments不会自动反映函数参数的变化
 - getElementById 与 querySelector
 - NodeList 与 HtmlElement
 - 如何获取元素相较于父元素和主文档  以及屏幕窗口 offset & scroll offset client
-  getBoundingClientRect
-
+- getBoundingClientRect
 - childList 与 children
 - createElement、createDocumentFragment 的区别
 - window
@@ -464,7 +463,6 @@ Expires：实体主体过期的时间
 Last-Modified：最后修改时间
 Set-Cookie：开始状态管理所使用的Cookie信息
 Cookie：服务器接收到的Cookie信息
-Cookie
 ```
 
 - 缓存策略（ [强制缓存与协商缓存](https://juejin.im/entry/5ad86c16f265da505a77dca4)）
@@ -480,9 +478,14 @@ Cookie
   - [GET 和 POST 区别 1](https://www.oschina.net/news/77354/http-get-post-different)
   - [GET 和 POST 区别 2](https://sunshinevvv.coding.me/blog/2017/02/09/HttpGETv.s.POST/)
   - [GET 和 POST 区别 3](https://www.zhihu.com/question/28586791)
-- HTTPS 链接建立过程
+- HTTPS 连接建立过程
+
 - 对称加密与非对称加密
-- HTTP2 特性
+- [HTTP/2 特性](https://zhuanlan.zhihu.com/p/26559480)
+  - 二进制分帧：HTTP/2 转换为二进制协议，将数据流以单个或多个帧的方式发送，帧之间乱序发送，根据帧首部流信息重新组装。
+  - 多路复用：同域名下所有通信都在单个TCP连接上完成，单个连接可以承载任意数量的双向数据流，在HTTP/2中，每个请求都可以带一个31bit的优先值，0表示最高优先级， 数值越大优先级越低。有了这个优先值，客户端和服务器就可以在处理不同的流时采取不同的策略，以最优的方式发送流、消息和帧。
+  - 首部压缩：HTTP/2在客户端和服务器端使用“首部表”来跟踪和存储之前发送的键－值对，对于相同的数据，不再通过每次请求和响应发送；首部表在HTTP/2的连接存续期内始终存在，由客户端和服务器共同渐进地更新;每个新的首部键－值对要么被追加到当前表的末尾，要么替换表中之前的值。
+  - 服务器推送：服务端可以在发送页面HTML时主动推送其它资源，而不用等到浏览器解析到相应位置，发起请求再响应。服务端可以主动推送，客户端也有权利选择是否接收。如果服务端推送的资源已经被浏览器缓存过，浏览器可以通过发送RST_STREAM帧来拒收。主动推送也遵守同源策略，服务器不会随便推送第三方资源给客户端。
 - 鉴权认证机制（Basic, oauth2, jwt）
 - SSO
 
