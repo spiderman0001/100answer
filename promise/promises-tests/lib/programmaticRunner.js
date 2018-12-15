@@ -49,7 +49,7 @@ module.exports = function (adapter, fileName, mochaOpts, cb) {
         var mocha = new Mocha(mochaOpts);
 
         var testFilePath;
-        if (fileName) {
+        if (fileName.length) {
             testFilePath = path.resolve(testsDir, fileName + '.js');
             mocha.addFile(testFilePath);
         } else {
