@@ -9,13 +9,11 @@
     <script src="./react.js"></script>
     <div id="root"></div>
     <script>
-    class Hello {
-        render() {
-            return React.createElement('div', null, `Hello World`);
-        }
-    }
-    const helloWorld = React.createElement(Hello, null, null);
-    ReactDOM.render(helloWorld, document.getElementById('root'));</script>
+    const Hello = ({name}) => {
+        return React.createElement('div', null, `Hello ${name}`);
+    };
+    const helloWorld = React.createElement(Hello, {name: 'Ofir'}, null);
+    ReactDOM.render(helloWorld, document.getElementById('root'));
     </script>
 </body>
 

@@ -1,21 +1,25 @@
 (() => {
-    function anElement(element, children) {
+    function anElement(element, props, children) {
         if (isClass(element)) {
             const component = new element();
             return component.render();
         } else if (typeof (element) === 'function') {
-            return element();
+            return element(props);
         } else {
-            const anElement = document.createElement(element);
-            children.forEach(child => {
-                if (typeof (child) === 'object') {
-                    anElement.appendChild(child);
-                } else {
-                    anElement.innerHTML += child;
-                }
-            });
-            return anElement;
+            return handleHtmlElement(element, children);
         }
+    }
+
+    function handleHtmlElement(element, children) {
+        const anElement = document.createElement(element);
+        children.forEach(child => {
+            if (typeof (child) === 'object') {
+                anElement.appendChild(child);
+            } else {
+                anElement.innerHTML += child;
+            }
+        });
+        return anElement;
     }
 
     function isClass(func) {
@@ -24,7 +28,7 @@
     }
 
     function createElement(el, props, ...children) {
-        return anElement(el, children);
+        return anElement(el, props, children);
     }
 
     window.React = {
