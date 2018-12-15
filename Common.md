@@ -3,6 +3,9 @@
 ### Git
 -  [git交互式学习](https://learngitbranching.js.org/?demo)
 -  Github/GitLab
+-  Git config
+-  Git ignore
+-  Git hooks
 
 ### Linux
 - 常见发行版
