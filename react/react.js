@@ -7,17 +7,24 @@
         } else if (typeof (element) === 'function') {
             return element(props);
         } else {
-            return handleHtmlElement(element, children);
+            return handleHtmlElement(element, props, children);
         }
     }
 
-    function handleHtmlElement(element, children) {
+    function handleHtmlElement(element, props, children) {
         const anElement = document.createElement(element);
         children.forEach(child => {
             if (typeof (child) === 'object') {
                 anElement.appendChild(child);
             } else {
                 anElement.innerHTML += child;
+            }
+        });
+        Object.keys(props).forEach(propName => {
+            if (/^on.*$/.test(propName)) {
+                anElement.addEventListener(propName.substring(2).toLowerCase(), props[propName]);
+            } else {
+                anElement.setAttribute(propName, props[propName]);
             }
         });
         return anElement;

@@ -9,18 +9,23 @@
     <script src="./react.js"></script>
     <div id="root"></div>
     <script>
-        class Hello extends React.Component {
+        class MyButton extends React.Component {
+
             constructor(props) {
                 super(props);
             }
+
             render() {
-                return React.createElement('div', null, `Hello ${this.props.name}`);
+                return React.createElement('button', {
+                    onclick: this.props.onClick,
+                    'name':'aButton'
+                }, `Click me`);
             }
         }
-        const helloWorld = React.createElement(Hello, {
-            name: 'Ofir'
+        const myBtn = React.createElement(MyButton, {
+            onClick: () => alert('yay it worked')
         }, null);
-        ReactDOM.render(helloWorld, document.getElementById('root'));
+        ReactDOM.render(myBtn, document.getElementById('root'));
     </script>
 </body>
 
