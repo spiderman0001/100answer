@@ -466,6 +466,13 @@ Cookie：服务器接收到的Cookie信息
 ```
 
 - 缓存策略（ [强制缓存与协商缓存](https://juejin.im/entry/5ad86c16f265da505a77dca4)）
+
+  - public：所有内容都将被缓存（客户端和代理服务器都可缓存）
+  - private：所有内容只有客户端可以缓存，Cache-Control 的默认取值
+  - no-cache：客户端缓存内容，但是是否使用缓存则需要经过协商缓存来验证决定
+  - no-store：所有内容都不会被缓存，即不使用强制缓存，也不使用协商缓存
+  - max-age=xxx (xxx is numeric)：缓存内容将在 xxx 秒后失效
+
 - RESTful
   - GET 获取资源
   - POST 传输实体主体
@@ -481,15 +488,23 @@ Cookie：服务器接收到的Cookie信息
 - HTTPS
 
   - HTTP 通信接口使用 SSL（Secure Socket Layer）或者 TLS（Transport Layer Security）协议替换，普通 HTTP 直接合 TCP 通信，HTTPS 是 HTTP 先和 SSL 通信，再由 SSL 和 TCP 通信。
+  - 对称加密与非对称加密
+    - 对称加密：加密和解密均使用同一个密钥
+    - 非对称：加密和解密使用不同密钥（公钥，私钥）
   - HTTP + 加密 + 认证 + 完整性保护 = HTTPS
   - 加密：HTTPS 使用对称+非对称的混合加密方式：1、使用非对称加密方式交换后续通信使用的对称加密密钥，2、在密钥交换安全的情况下，使用对称  加密密钥通信
-  - 数字证书认证机构（CA Certificate Agent），浏览器一般内置CA的公钥用于解密校验数字证书。
-  - 认证：
-
-- 对称加密与非对称加密
-
-  - 对称加密：加密和解密均使用同一个密钥
-  - 非对称：加密和解密使用不同密钥（公钥，私钥）
+  - 数字证书认证机构（CA Certificate Agent），浏览器一般内置 CA 的公钥用于解密校验数字证书。
+  - [连接建立过程](http://www.ruanyifeng.com/blog/2014/09/illustration-ssl.html)
+    - 客户端给出协议版本号、一个客户端生成的随机数（Client random），以及客户端支持的加密方法
+    - 服务端确认双方使用的加密方法，并给出数字证书、以及一个服务器生成的随机数（Server random）
+    - 客户端确认数字证书有效，然后生成一个新的随机数（Premaster secret），并使用数字证书中的公钥，加密这个随机数，发给服务端
+    - 服务端使用自己的私钥，获取客户端发来的随机数（即 Premaster secret）
+    - 客户端和服务端根据  约定的加密方法，使用前面的三个随机数，生成"对话密钥"（session key），用来加密接下来的整个对话过程。
+  - 握手阶段：
+    - 生成对话密钥一共需要三个随机数。
+    - 握手之后的对话使用"对话密钥"加密（对称加密），服务器的公钥和私钥只用于加密和解密"对话密钥"（非对称加密），无其他作用。
+    - 服务器公钥放在服务器的数字证书之中。
+    - 整个通话的安全，只取决于第三个随机数（Premaster secret）能不能被破解。
 
 - [HTTP/2 特性](https://zhuanlan.zhihu.com/p/26559480)
   - [HTTP/2 简介](https://developers.google.com/web/fundamentals/performance/http2/?hl=zh-cn)
@@ -497,8 +512,27 @@ Cookie：服务器接收到的Cookie信息
   - 多路复用：同域名下所有通信都在单个 TCP 连接上完成，单个连接可以承载任意数量的双向数据流，在 HTTP/2 中，每个请求都可以带一个 31bit 的优先值，0 表示最高优先级， 数值越大优先级越低。有了这个优先值，客户端和服务器就可以在处理不同的流时采取不同的策略，以最优的方式发送流、消息和帧。
   - 首部压缩：HTTP/2 在客户端和服务器端使用“首部表”来跟踪和存储之前发送的键－值对，对于相同的数据，不再通过每次请求和响应发送；首部表在 HTTP/2 的连接存续期内始终存在，由客户端和服务器共同渐进地更新;每个新的首部键－值对要么被追加到当前表的末尾，要么替换表中之前的值。
   - 服务器推送：服务端可以在发送页面 HTML 时主动推送其它资源，而不用等到浏览器解析到相应位置，发起请求再响应。服务端可以主动推送，客户端也有权利选择是否接收。如果服务端推送的资源已经被浏览器缓存过，浏览器可以通过发送 RST_STREAM 帧来拒收。主动推送也遵守同源策略，服务器不会随便推送第三方资源给客户端。
-- 鉴权认证机制（Basic, oauth2, jwt）
-- SSO（Single Sign-On单点登录）
+- 鉴权认证机制（Basic, OAuth2, JWT）
+  - BASIC
+    - 401 Authorization Required
+    - username:password -> base64 -> Authorization: BASIC _base64 format info_
+  - OAUTH2
+    - [参考资源 1](http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html) [参考资源 2](https://zhuanlan.zhihu.com/p/30720675)
+    - 用户打开客户端以后，客户端要求用户给予授权。
+    - 用户同意给予客户端授权。
+    - 客户端使用上一步获得的授权，向认证服务器申请令牌。
+    - 认证服务器对客户端进行认证以后，确认无误，同意发放令牌。
+    - 客户端使用令牌，向资源服务器申请获取资源。
+    - 资源服务器确认令牌无误，同意向客户端开放资源。
+  - JWT (JSON Web Token)
+    - [参考资源 1](http://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html) [参考资源 2](https://www.jianshu.com/p/576dbf44b2ae)
+    - JWT 结构：Header，Payload，Signature，以 _._ 分隔。
+    - 可以放置在 Cookie 里自动发送
+    - 跨域可以放在 http header 中：Authorization: Bearer \<token\>
+- SSO（Single Sign-On 多应用单点登录）
+  - sso 需要一个独立的认证中心，只有认证中心能接受用户的用户名密码等安全信息
+  - 重定向
+  - 应用向认证中心查询用户信息
 
 #### 2、TCP
 
@@ -808,8 +842,8 @@ Cookie：服务器接收到的Cookie信息
 
 #### 测试
 
-- 单测，Jest， Mocha，覆盖率
-- e2e 测试，Phantomjs，puppeteer
+- Unit Test：Jest， Mocha，覆盖率
+- E2E Test：Phantomjs，Puppeteer
 
 #### 前端发布 CI
 
@@ -818,9 +852,9 @@ Cookie：服务器接收到的Cookie信息
 - css 背景图片处理
 - 引用路径处理
 - md5
-- （压缩）
-- 资源处理（代码注入等）
+- 压缩
+- 资源后处理（代码注入等）
 - 打包
-- 上传
+- 上传静态存储或 FTP
 - 部署 CDN
 - 清理 CDN 缓存
