@@ -5,8 +5,6 @@
     function anElement(element, props, children) {
         if (isClass(element)) {
             return handleClass(element, props, children)
-            const component = new element();
-            return component.render();
         } else if (typeof (element) === 'function') {
             return element(props);
         } else {
