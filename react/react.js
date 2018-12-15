@@ -1,12 +1,9 @@
 (() => {
     function anElement(element, children) {
-        const anElement = document.createElement(element);
-        anElement.innerHTML = children.join(' ');
-        return anElement;
-    }
-
-    function anElement(element, children) {
-        if (typeof (element) === 'function') {
+        if (isClass(element)) {
+            const component = new element();
+            return component.render();
+        } else if (typeof (element) === 'function') {
             return element();
         } else {
             const anElement = document.createElement(element);
@@ -19,6 +16,11 @@
             });
             return anElement;
         }
+    }
+
+    function isClass(func) {
+        return typeof func === 'function' &&
+            /^class\s/.test(Function.prototype.toString.call(func));
     }
 
     function createElement(el, props, ...children) {
