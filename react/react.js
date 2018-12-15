@@ -1,7 +1,10 @@
 (() => {
+    let rootDOMElement, rootReactElement;
+    const REACT_CLASS = 'REACT_CLASS'
+
     function anElement(element, props, children) {
         if (isClass(element)) {
-            return handleClass(element, props)
+            return handleClass(element, props, children)
             const component = new element();
             return component.render();
         } else if (typeof (element) === 'function') {
@@ -13,14 +16,8 @@
 
     function handleHtmlElement(element, props, children) {
         const anElement = document.createElement(element);
-        children.forEach(child => {
-            if (typeof (child) === 'object') {
-                anElement.appendChild(child);
-            } else {
-                anElement.innerHTML += child;
-            }
-        });
-        Object.keys(props).forEach(propName => {
+        children.forEach(child => appendChild(anElement, child));
+        props && Object.keys(props).forEach(propName => {
             if (/^on.*$/.test(propName)) {
                 anElement.addEventListener(propName.substring(2).toLowerCase(), props[propName]);
             } else {
@@ -30,10 +27,23 @@
         return anElement;
     }
 
+    function appendChild(element, child) {
+        if (child.type === REACT_CLASS) {
+            appendChild(element, child.render());
+        } else if (Array.isArray(child)) {
+            child.forEach(ch => appendChild(element, ch));
+        } else if (typeof (child) === 'object') {
+            element.appendChild(child);
+        } else {
+            element.innerHTML += child;
+        }
+    }
 
-    function handleClass(clazz, props) {
-        const component = new clazz(props);
-        return component.render();
+    function handleClass(clazz, props, children) {
+        const reactElement = new clazz(props);
+        reactElement.children = children;
+        reactElement.type = REACT_CLASS;
+        return reactElement;
     }
 
     function isClass(func) {
@@ -49,6 +59,20 @@
         constructor(props) {
             this.props = props;
         }
+        setState(state) {
+            this.state = Object.assign({}, this.state, state);
+            reRender();
+        }
+    }
+
+
+
+    function reRender() {
+        //删除所有子节点
+        while (rootDOMElement.hasChildNodes()) {
+            rootDOMElement.removeChild(rootDOMElement.lastChild);
+        }
+        ReactDOM.render(rootReactElement, rootDOMElement);
     }
     window.React = {
         createElement,
@@ -56,7 +80,10 @@
     };
     window.ReactDOM = {
         render: (el, domEl) => {
-            domEl.appendChild(el);
+            rootReactElement = el;
+            rootDOMElement = domEl;
+            const currentDOM = rootReactElement.render();
+            domEl.appendChild(currentDOM);
         }
     };
 })();
