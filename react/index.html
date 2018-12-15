@@ -9,11 +9,18 @@
     <script src="./react.js"></script>
     <div id="root"></div>
     <script>
-    const Hello = ({name}) => {
-        return React.createElement('div', null, `Hello ${name}`);
-    };
-    const helloWorld = React.createElement(Hello, {name: 'Ofir'}, null);
-    ReactDOM.render(helloWorld, document.getElementById('root'));
+        class Hello extends React.Component {
+            constructor(props) {
+                super(props);
+            }
+            render() {
+                return React.createElement('div', null, `Hello ${this.props.name}`);
+            }
+        }
+        const helloWorld = React.createElement(Hello, {
+            name: 'Ofir'
+        }, null);
+        ReactDOM.render(helloWorld, document.getElementById('root'));
     </script>
 </body>
 
