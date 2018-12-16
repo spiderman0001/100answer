@@ -61,7 +61,7 @@ export default {
 
 - 全局作用域
 -  函数作用域
-- 块级作用域 let, const , {}
+- 块级作用域 let, const , with, try catch
 - 变量声明提升
 - 逐级访问，未找到会抛异常
 
@@ -92,7 +92,8 @@ export default {
 
 - 浏览器异步机制
 -  常用异步函数及执行时机
-- Node 的 EventLoop
+- [Node 的 EventLoop](https://github.com/nodejs/nodejs.org/blob/master/locale/en/docs/guides/event-loop-timers-and-nexttick.md)
+
 - setImmediate 与 process.nextTick
 - [介绍](https://github.com/creeperyang/blog/issues/21)
 
@@ -105,6 +106,12 @@ export default {
 - Promise 的链式调用实现
 - Async/Await 语法特点
 - 如何 await 两个并行异步  任务
+```javascript
+    async function A() {
+        await doTaskA();
+        await doTaskB();
+    }
+```
 - Async/Await 异常处理
 
 #### 9、ES6、ES7、ESNext
@@ -124,7 +131,22 @@ export default {
 - Iterator 和 for...of 循环
 - 如何让一个对象可以迭代
 - Generator 函数及其应用
+```javascript
+    let count = 0;
+    function* gen() {
+        while(true) {
+            yield count++;
+        }
+        return count
+    }
+    let g = gen();
+    console.log(g.next())
+    console.log(g.next())
+    console.log(g.next())
+    console.log(g.next())
+ ```
 - 如何用 generator 模仿 async 函数
+    [demo]('./demo/mockAsync.js')
 - class 语法，constructor 函数 ，super 的用法，new.target， 静态方法中的 this 指向
 -  写一个类，使其实例拥有多个类的的属性和方法。（模拟多重继承）
 - 类的静态  属性和静态方法，是否可以继承
