@@ -33,6 +33,7 @@
     - [[Resolve]](promise, x)
     - x可以使thenable
     - then返回一个新的对象
+...
 
 ##### 实现一个promise
 - executor
@@ -76,13 +77,39 @@ for(var i of obj) {
 }
 ```
 ##### generator
+```javascript
+    let count = 0;
+    function* gen() {
+        while(true) {
+            yield count++;
+        }
+        return count
+    }
+    let g = gen();
+    console.log(g.next())
+    console.log(g.next())
+    console.log(g.next())
+    console.log(g.next())
+ ```
+
+消息传递功能（yield next）
+```
+
 
 
 ##### async await
 
+```javavsript
+async function A() {
+    await doTaskA();
+    await doTaskB();
+}
+```
 
-##### 实现一个async await
+##### 用promise、generator实现一个async await
 
 event loop
 call stack
 event Table/Queue
+
+
