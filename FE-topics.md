@@ -158,6 +158,15 @@ export default {
   [example](https://github.com/mqyqingfeng/Blog/issues/42)
 - 函数组合
 - 高阶函数 map, reduce
+```javascript
+//reduce模拟map
+Array.prototype.map = function (fn) {
+   return this.reduce(function(acc, cur) {
+        acc.push(fn(cur));
+        return acc;
+    }, []); 
+}
+```
 - 常用的函数式编程的库 lodash/fp
 
 #### 11、Node
