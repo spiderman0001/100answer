@@ -7,6 +7,29 @@
 - 函数可以访问其声明时作用域内的变量
 - 创建私有变量
 - 模块化
+- 模块模式
+    - AMD、 CommonJS、 Es Modules
+```javascript
+// AMD、
+// https://github.com/amdjs/amdjs-api/wiki/AMD
+define(['module1', ',module2'], function(dep1, dep2) {
+  console.log(module1.setName());
+});
+define('myModule', ['dep1', 'dep2'], function (dep1, dep2) {
+
+});
+// CommonJS、
+module.exports = {
+
+}
+
+// Es Modules
+export default {
+
+}
+
+```
+
 
 #### 2、this 以及如何改变 this 指向
 
