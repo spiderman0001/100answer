@@ -8,7 +8,8 @@
 - 创建私有变量
 - 模块化
 - 模块模式
-    - AMD、 CommonJS、 Es Modules
+- AMD、 CommonJS、 Es Modules
+
 ```javascript
 // AMD、
 // https://github.com/amdjs/amdjs-api/wiki/AMD
@@ -54,13 +55,13 @@ export default {
 
 - Object
 - 通过 Object.prototype.toString 做类型判断
-- 通过 instanceOf 判断对象是否是某个  构造器的实例
+- 通过 instanceOf 判断对象是否是某个构造器的实例
 - null 表示值为空，undefined 表示未定义或值为 undefined
 
 #### 4、变量作用域机制
 
 - 全局作用域
--  函数作用域
+-函数作用域
 - 块级作用域 let, const , with, try catch
 - 变量声明提升
 - 逐级访问，未找到会抛异常
@@ -91,7 +92,7 @@ export default {
 #### 7、EventLoop & 异步机制（Node、Browser）
 
 - 浏览器异步机制
--  常用异步函数及执行时机
+- 常用异步函数及执行时机
 - [Node 的 EventLoop](https://github.com/nodejs/nodejs.org/blob/master/locale/en/docs/guides/event-loop-timers-and-nexttick.md)
 
 - setImmediate 与 process.nextTick
@@ -105,7 +106,7 @@ export default {
 - Promise.race, Promise.all
 - Promise 的链式调用实现
 - Async/Await 语法特点
-- 如何 await 两个并行异步  任务
+- 如何 await 两个并行异步任务
 ```javascript
     async function A() {
         await doTaskA();
@@ -118,7 +119,7 @@ export default {
 
 - Symbol
 - let，const
-- 解构  与默认值
+- 解构与默认值
 - spread 运算符
 - 函数参数转数组
 - 函数默认值及其限制
@@ -148,8 +149,8 @@ export default {
 - 如何用 generator 模仿 async 函数
     [demo]('./demo/mockAsync.js')
 - class 语法，constructor 函数 ，super 的用法，new.target， 静态方法中的 this 指向
--  写一个类，使其实例拥有多个类的的属性和方法。（模拟多重继承）
-- 类的静态  属性和静态方法，是否可以继承
+- 写一个类，使其实例拥有多个类的的属性和方法。（模拟多重继承）
+- 类的静态属性和静态方法，是否可以继承
 
 #### 10、函数式编程
 
@@ -158,15 +159,6 @@ export default {
   [example](https://github.com/mqyqingfeng/Blog/issues/42)
 - 函数组合
 - 高阶函数 map, reduce
-```javascript
-//reduce模拟map
-Array.prototype.map = function (fn) {
-   return this.reduce(function(acc, cur) {
-        acc.push(fn(cur));
-        return acc;
-    }, []); 
-}
-```
 - 常用的函数式编程的库 lodash/fp
 
 #### 11、Node
@@ -199,7 +191,7 @@ Array.prototype.map = function (fn) {
 - 工厂模式
 - Mixin 模式
 - 装饰者模式
-- MVC, MVP, MVVM 的区别，双向绑定  与单向数据流的优缺点
+- MVC, MVP, MVVM 的区别，双向绑定与单向数据流的优缺点
 
 #### 13、模块化
 
@@ -227,15 +219,15 @@ arguments不会自动反映函数参数的变化
 
 - export 和 import (with default)
 - ESM 的加载（浏览器 script type=module，Node -> mjs）
-- Commonjs 的特点与  加载原理
-- Commonjs 如何做到  可以访问 require,require, module,exports, **filename**, dirname
+- Commonjs 的特点与加载原理
+- Commonjs 如何做到可以访问 require,require, module,exports, **filename**, dirname
 - CommonJS 模块的循环加载只输出已执行的部分
 - ESM 循环引用需要自己保证
 
 #### 14、其他
 
 - TypeScript
-- lodash 部分  函数  的实现
+- lodash 部分函数的实现
 - JSON
 
 ### CSS
@@ -311,7 +303,7 @@ arguments不会自动反映函数参数的变化
 - flexible
 - vw, vh
 - media-query
--  百分比
+- 百分比
 - 主题皮肤实现
 
 #### 12、Transform，Transition，Animation
@@ -326,7 +318,7 @@ arguments不会自动反映函数参数的变化
 
 #### 13、z-index
 
--  层叠关系确定
+- 层叠关系确定
 - 与定位关系
 - 如何实现永远在最上层的模态框
 
@@ -340,7 +332,7 @@ arguments不会自动反映函数参数的变化
 - font 查找规则
 - 自定义字体
 - 字号，字重，行高的关系
-- 彩色  渐变文字实现
+- 彩色渐变文字实现
 - writing-mode
 - white-space
 - word-break
@@ -369,7 +361,7 @@ arguments不会自动反映函数参数的变化
 
 #### 1、常用标签
 
-- 块级标签， 内联  标签，可替换标签
+- 块级标签， 内联标签，可替换标签
 - link, head, meta, style, script， body 标签
 - iframe
 - canvas
@@ -389,7 +381,7 @@ arguments不会自动反映函数参数的变化
 - scrollingElement
 - getElementById 与 querySelector
 - NodeList 与 HtmlElement
-- 如何获取元素相较于父元素和主文档  以及屏幕窗口 offset & scroll offset client
+- 如何获取元素相较于父元素和主文档以及屏幕窗口 offset & scroll offset client
 - getBoundingClientRect
 - childList 与 children
 - createElement、createDocumentFragment 的区别
@@ -546,14 +538,14 @@ Cookie：服务器接收到的Cookie信息
     - 对称加密：加密和解密均使用同一个密钥
     - 非对称：加密和解密使用不同密钥（公钥，私钥）
   - HTTP + 加密 + 认证 + 完整性保护 = HTTPS
-  - 加密：HTTPS 使用对称+非对称的混合加密方式：1、使用非对称加密方式交换后续通信使用的对称加密密钥，2、在密钥交换安全的情况下，使用对称  加密密钥通信
+  - 加密：HTTPS 使用对称+非对称的混合加密方式：1、使用非对称加密方式交换后续通信使用的对称加密密钥，2、在密钥交换安全的情况下，使用对称加密密钥通信
   - 数字证书认证机构（CA Certificate Agent），浏览器一般内置 CA 的公钥用于解密校验数字证书。
   - [连接建立过程](http://www.ruanyifeng.com/blog/2014/09/illustration-ssl.html)
     - 客户端给出协议版本号、一个客户端生成的随机数（Client random），以及客户端支持的加密方法
     - 服务端确认双方使用的加密方法，并给出数字证书、以及一个服务器生成的随机数（Server random）
     - 客户端确认数字证书有效，然后生成一个新的随机数（Premaster secret），并使用数字证书中的公钥，加密这个随机数，发给服务端
     - 服务端使用自己的私钥，获取客户端发来的随机数（即 Premaster secret）
-    - 客户端和服务端根据  约定的加密方法，使用前面的三个随机数，生成"对话密钥"（session key），用来加密接下来的整个对话过程。
+    - 客户端和服务端根据约定的加密方法，使用前面的三个随机数，生成"对话密钥"（session key），用来加密接下来的整个对话过程。
   - 握手阶段：
     - 生成对话密钥一共需要三个随机数。
     - 握手之后的对话使用"对话密钥"加密（对称加密），服务器的公钥和私钥只用于加密和解密"对话密钥"（非对称加密），无其他作用。
@@ -562,7 +554,7 @@ Cookie：服务器接收到的Cookie信息
 
 - [HTTP/2 特性](https://zhuanlan.zhihu.com/p/26559480)
   - [HTTP/2 简介](https://developers.google.com/web/fundamentals/performance/http2/?hl=zh-cn)
-  - 二进制分帧：HTTP/2 转换为二进制协议，将数据流以  单个或多个帧的方式发送，帧之间乱序发送，根据帧首部流信息重新组装。
+  - 二进制分帧：HTTP/2 转换为二进制协议，将数据流以单个或多个帧的方式发送，帧之间乱序发送，根据帧首部流信息重新组装。
   - 多路复用：同域名下所有通信都在单个 TCP 连接上完成，单个连接可以承载任意数量的双向数据流，在 HTTP/2 中，每个请求都可以带一个 31bit 的优先值，0 表示最高优先级， 数值越大优先级越低。有了这个优先值，客户端和服务器就可以在处理不同的流时采取不同的策略，以最优的方式发送流、消息和帧。
   - 首部压缩：HTTP/2 在客户端和服务器端使用“首部表”来跟踪和存储之前发送的键－值对，对于相同的数据，不再通过每次请求和响应发送；首部表在 HTTP/2 的连接存续期内始终存在，由客户端和服务器共同渐进地更新;每个新的首部键－值对要么被追加到当前表的末尾，要么替换表中之前的值。
   - 服务器推送：服务端可以在发送页面 HTML 时主动推送其它资源，而不用等到浏览器解析到相应位置，发起请求再响应。服务端可以主动推送，客户端也有权利选择是否接收。如果服务端推送的资源已经被浏览器缓存过，浏览器可以通过发送 RST_STREAM 帧来拒收。主动推送也遵守同源策略，服务器不会随便推送第三方资源给客户端。
@@ -591,11 +583,11 @@ Cookie：服务器接收到的Cookie信息
 #### 2、TCP
 
 - 特点
-  - 面向  连接
+  - 面向连接
   - 点对点
   - 可靠交付
   - 全双工通信
-  -  面向字节流
+  - 面向字节流
 - 连接（socket）
   - socket = （ip : port）
   - TCP = (socket1, socket2)
@@ -612,7 +604,7 @@ Cookie：服务器接收到的Cookie信息
 
 - 拥塞控制
   - 慢开始
-  -  拥塞避免
+  - 拥塞避免
   - 快重传
   - 快恢复
 - 流量控制
@@ -638,7 +630,7 @@ Cookie：服务器接收到的Cookie信息
 
 #### 5、网络安全
 
-- XSS（跨站脚本  攻击）
+- XSS（跨站脚本攻击）
 
   - 表单中加入 html script 标签执行危险操作
   - 防御，表单字段转义
@@ -649,15 +641,15 @@ Cookie：服务器接收到的Cookie信息
 - OS 命令注入
 
   - 请求参数中注入操作系统命令
-  - 不直接使用请求参数拼接  执行命令，校验
+  - 不直接使用请求参数拼接执行命令，校验
 
-- DDOS（分布式拒绝服务  攻击）
+- DDOS（分布式拒绝服务攻击）
 
-  - 持续高 QPS 击垮应用，无法响应  正常用户请求
+  - 持续高 QPS 击垮应用，无法响应正常用户请求
   - 反爬，限流
 
 - CSRF（跨站请求伪造）
-  - 劫持用户 cookie 或 token 等认证信息  假冒用户进行攻击
+  - 劫持用户 cookie 或 token 等认证信息假冒用户进行攻击
   - cookie http only， 多重鉴权，token 过期机制，HTTPS
 
 #### 5、 常用数据结构
@@ -684,9 +676,9 @@ Cookie：服务器接收到的Cookie信息
 #### 6、 操作系统
 
 - 进程，线程，管程
-- Linux 进程  通信（IPC）
+- Linux 进程通信（IPC）
 - 内存与虚拟内存
-- 磁盘与文件  系统（Linux）
+- 磁盘与文件系统（Linux）
 - 基于 Socket 的远程过程调用（RPC）
 - Linux 用户与权限
 - Shell 脚本与 CLI
@@ -722,7 +714,7 @@ Cookie：服务器接收到的Cookie信息
 
 #### 5、 Vue 的响应式的缺陷，解决办法
 
-- 需要声明属性  值，新增无法识别
+- 需要声明属性值，新增无法识别
 - Vue.set
 
 #### 6、 Vue 组件的设计原则与复用策略
@@ -730,7 +722,7 @@ Cookie：服务器接收到的Cookie信息
 - 功能单一
 - 样式功能可配置
 
-#### 7、 Vue 组件的通信机制，跨级  非兄弟组件如何通信
+#### 7、 Vue 组件的通信机制，跨级非兄弟组件如何通信
 
 - 父子 props, event
 - 跨级 event bus 或者 Rxjs
@@ -743,12 +735,12 @@ Cookie：服务器接收到的Cookie信息
 - js transition hook function
 - 配合 animate.css 或者 JS 动画库实现复杂动效。
 
-#### 9、 Vue  计算属性与 watch
+#### 9、 Vue计算属性与 watch
 
 - 计算属性应该是纯函数（setter 除外）
 - watch 可以改变 state 或者执行操作
 
-#### 10、 Vue  插槽机制
+#### 10、 Vue插槽机制
 
 - default slot
 - named slot
@@ -757,8 +749,8 @@ Cookie：服务器接收到的Cookie信息
 #### 11、 Vue 动态组件
 
 - is 判断
--  异步加载注册
--  逻辑容器组件控制视图组件渲染
+- 异步加载注册
+- 逻辑容器组件控制视图组件渲染
 
 #### 12、 Vue directive、mixin、filter, extends 的作用
 
@@ -774,7 +766,7 @@ Cookie：服务器接收到的Cookie信息
 
 #### 14、 React 的特点
 
--  状态机
+- 状态机
 - 虚拟 DOM
 - 函数式
 - JSX
@@ -811,7 +803,7 @@ Cookie：服务器接收到的Cookie信息
 
 #### 21、 React 组件 defaultProps 与 propTypes
 
-- 组件 props 类型校验  与默认值
+- 组件 props 类型校验与默认值
 
 #### 22、 React 组件的通信
 
@@ -843,7 +835,7 @@ Cookie：服务器接收到的Cookie信息
 #### 27、VDom 的原理
 
 - createHtmlFragment 一次插进 dom 减少 dom 操作
-- 内存中维护一个与 Dom 树对应的树结构， 操作只更改 vdom，需要渲染才将差异部分  渲染出来
+- 内存中维护一个与 Dom 树对应的树结构， 操作只更改 vdom，需要渲染才将差异部分渲染出来
 - 不依赖实际 DOM，却可以生成 DOM
 -  可用于服务端渲染出 HTML 结构
 
@@ -874,7 +866,7 @@ Cookie：服务器接收到的Cookie信息
 - 构建过程中的对象
 - Webpack 插件
 - Webpack Loader
--  构建性能优化
+- 构建性能优化
 - 构建时注入
 - Code Splitting
 - 优化手段
@@ -925,7 +917,7 @@ Cookie：服务器接收到的Cookie信息
 - 页面模板生成器
 - sass mixins, functions
 - page bootstrap 脚本
--  页面  异常处理工具
+- 页面异常处理工具
 - 页面性能分析上报
 - 页面打点统计工具
 - Node 服务压测工具
@@ -956,3 +948,5 @@ Cookie：服务器接收到的Cookie信息
 - 上传静态存储或 FTP
 - 部署 CDN
 - 清理 CDN 缓存
+
+

@@ -44,3 +44,13 @@ xhr.send(null);
   [demo](./demo/deepClone.js)
 - 二分查找
 - 树的翻转（左旋右旋）
+- reduce 模拟 map
+  ```javascript
+  //reduce模拟map
+  Array.prototype.map = function(fn) {
+    return this.reduce(function(acc, cur) {
+      acc.push(fn(cur));
+      return acc;
+    }, []);
+  };
+  ```
