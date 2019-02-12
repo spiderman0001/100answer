@@ -31,7 +31,6 @@ export default {
 
 ```
 
-
 #### 2、this 以及如何改变 this 指向
 
 - 严格模式 undefined
@@ -107,12 +106,14 @@ export default {
 - Promise 的链式调用实现
 - Async/Await 语法特点
 - 如何 await 两个并行异步任务
+
 ```javascript
     async function A() {
         await doTaskA();
         await doTaskB();
     }
 ```
+
 - Async/Await 异常处理
 
 #### 9、ES6、ES7、ESNext
@@ -132,6 +133,7 @@ export default {
 - Iterator 和 for...of 循环
 - 如何让一个对象可以迭代
 - Generator 函数及其应用
+
 ```javascript
     let count = 0;
     function* gen() {
@@ -146,6 +148,7 @@ export default {
     console.log(g.next())
     console.log(g.next())
  ```
+
 - 如何用 generator 模仿 async 函数
     [demo]('./demo/mockAsync.js')
 - class 语法，constructor 函数 ，super 的用法，new.target， 静态方法中的 this 指向
