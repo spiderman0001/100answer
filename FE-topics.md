@@ -7,29 +7,6 @@
 - 函数可以访问其声明时作用域内的变量
 - 创建私有变量
 - 模块化
-- 模块模式
-- AMD、 CommonJS、 Es Modules
-
-```javascript
-// AMD、
-// https://github.com/amdjs/amdjs-api/wiki/AMD
-define(['module1', ',module2'], function(dep1, dep2) {
-  console.log(module1.setName());
-});
-define('myModule', ['dep1', 'dep2'], function (dep1, dep2) {
-
-});
-// CommonJS、
-module.exports = {
-
-}
-
-// Es Modules
-export default {
-
-}
-
-```
 
 #### 2、this 以及如何改变 this 指向
 
@@ -106,14 +83,6 @@ export default {
 - Promise 的链式调用实现
 - Async/Await 语法特点
 - 如何 await 两个并行异步任务
-
-```javascript
-    async function A() {
-        await doTaskA();
-        await doTaskB();
-    }
-```
-
 - Async/Await 异常处理
 
 #### 9、ES6、ES7、ESNext
@@ -126,29 +95,13 @@ export default {
 - 函数默认值及其限制
 - 字符串模板与标签模板
 - 函数 rest 参数
-- 箭头函数的 this 指向
+- 箭头函数
 - Set 与 WeakSet
 - Map 与 Object 的区别
 - Proxy 与 Reflect 的关系， 使用场景
 - Iterator 和 for...of 循环
 - 如何让一个对象可以迭代
 - Generator 函数及其应用
-
-```javascript
-    let count = 0;
-    function* gen() {
-        while(true) {
-            yield count++;
-        }
-        return count
-    }
-    let g = gen();
-    console.log(g.next())
-    console.log(g.next())
-    console.log(g.next())
-    console.log(g.next())
- ```
-
 - 如何用 generator 模仿 async 函数
     [demo]('./demo/mockAsync.js')
 - class 语法，constructor 函数 ，super 的用法，new.target， 静态方法中的 this 指向
@@ -447,7 +400,7 @@ arguments不会自动反映函数参数的变化
 - 事件的阶段
 - event target, event currentTarget
 - 注册与清除注册
--  事件冒泡与事件捕获
+- 事件冒泡与事件捕获
 - passive event
 - 事件代理（事件合成）
 - 自定义事件
@@ -691,10 +644,13 @@ Cookie：服务器接收到的Cookie信息
 
 #### 1、 Vue 实例的创建过程
 
-- 模板编译
-- 组件实例化
-- 响应式处理
-- 生命周期 hook 执行
+- 合并选项（默认与自定义）
+- 初始化实例属性（生命周期，事件，渲染）
+- beforeCreate Hook
+- 初始化出入
+- 初始化组件状态（props，methods, data, computed, watch）
+- 初始化provide
+- created Hook
 - 挂载
 
 #### 2、 Vue 组件的生命周期钩子
@@ -703,27 +659,35 @@ Cookie：服务器接收到的Cookie信息
 - update
 - mount
 - destroy
-- 触发顺序，由内到外依次触发
+- 触发顺序，由内层组件到外层依次触发
 
 #### 3、 Vue 是如何做到依赖收集的
 
-- Deps
+- 通过为每个需要响应式的属性简历getter setter, 在getter中收集放置在Dep对象中，在setter的时候触发
+- 定义后通过触发一次getter收集
+- 同一时期只有一个getter被触发，所以只需
+- defineReactive
+- Observer 实例绑在object的__ob__属性上，
 
 #### 4、 Vue 的响应式的原理
 
 - Object.defineProperty
-- getter setter
+- getter 收集依赖 setter 触发依赖
+- 发布订阅模式
 - Vue 3 Proxy
 
 #### 5、 Vue 的响应式的缺陷，解决办法
 
 - 需要声明属性值，新增无法识别
-- Vue.set
+- 无法识别所有数组API
+- Vue.set，this.$set
 
 #### 6、 Vue 组件的设计原则与复用策略
 
 - 功能单一
 - 样式功能可配置
+- Mixin
+- extends
 
 #### 7、 Vue 组件的通信机制，跨级非兄弟组件如何通信
 
@@ -742,6 +706,7 @@ Cookie：服务器接收到的Cookie信息
 
 - 计算属性应该是纯函数（setter 除外）
 - watch 可以改变 state 或者执行操作
+- 底层都是通过getter/setter实现。
 
 #### 10、 Vue插槽机制
 
@@ -760,12 +725,12 @@ Cookie：服务器接收到的Cookie信息
 - 指令
 - 混合
 - 过滤器是纯函数，可以管道级联调用
-- 继承
+- 继承其他组件
 
 #### 13、 Vue SSR
 
-- 服务端渲染流程
-- 如何编写同构代码
+- 服务端渲染流程：路由匹配 -> 组件fetch data 填充 state -> renderer 渲染出html结构 -> 发送给客户端渲染
+- 如何编写同构代码（注意尽可能使用node browser shared api）
 
 #### 14、 React 的特点
 
@@ -777,13 +742,14 @@ Cookie：服务器接收到的Cookie信息
 #### 15、React Class Based Component 的好处
 
 - 易继承扩展，复用度高
-- React constructor 里面为什么要加 super(props)
+- React constructor 里面为什么要加 super(props)：React组件实例属性是由React的构造函数添加的。
 
 #### 16、 React 组件生命周期 Hook
 
 - componentWillxxx
 - componentShouldxxx
 - componentDidxxx
+- React Hooks
 
 #### 17、 React 如何触发渲染
 
@@ -812,10 +778,11 @@ Cookie：服务器接收到的Cookie信息
 
 - props（值与 function 回调，注意回调中对的 this）
 - Context API
+- Redux
 
 #### 23、 React 组件的渲染性能优化
 
-- componentShouldUpdate 中进行判断
+- componentShouldUpdate 中进行判断是否需要渲染
 - 尽量合并 setState 操作
 - 指定 key 以复用组件
 
@@ -831,6 +798,7 @@ Cookie：服务器接收到的Cookie信息
 
 #### 26、 React 高阶组件及场景
 
+- 接收组件，返回新组件的函数
 - 权限校验
 - 组件定制
 - 通过 props 生成新组件而不是改传入的组件
@@ -840,7 +808,7 @@ Cookie：服务器接收到的Cookie信息
 - createHtmlFragment 一次插进 dom 减少 dom 操作
 - 内存中维护一个与 Dom 树对应的树结构， 操作只更改 vdom，需要渲染才将差异部分渲染出来
 - 不依赖实际 DOM，却可以生成 DOM
--  可用于服务端渲染出 HTML 结构
+- 可用于服务端渲染或者非web渲染（RN）
 
 #### 28、VDom 的 Diff 算法
 
@@ -855,6 +823,12 @@ Cookie：服务器接收到的Cookie信息
 - action
 - reducers
 - 单一数据源（store）
+
+#### 30、Vue.nextTick实现原理
+
+- async deferring task queue
+- micro task机制（Promise -> MutationObserver -> setTimeout fallback）
+- vm.$next 与 Vue.nextTick是同一个函数
 
 ### 前端工程
 
@@ -951,5 +925,3 @@ Cookie：服务器接收到的Cookie信息
 - 上传静态存储或 FTP
 - 部署 CDN
 - 清理 CDN 缓存
-
-
