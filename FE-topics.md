@@ -666,8 +666,12 @@ Cookie：服务器接收到的Cookie信息
 - 通过为每个需要响应式的属性简历getter setter, 在getter中收集放置在Dep对象中，在setter的时候触发
 - 定义后通过触发一次getter收集
 - 同一时期只有一个getter被触发，所以只需
-- defineReactive
-- Observer 实例绑在object的__ob__属性上，
+- Observer 实例绑在object的__ob__属性上
+- 初始化data, props, computed的时候进行求值访问，数据变化触发依赖更新
+- 通过watch mountComponent函数，首次执行渲染需要访问getters，从而触发依赖，当触发数据setter时重新对mountComponent执行求值，进而触发渲染
+- Dep依赖对象，包含依赖手机，触发，发布订阅
+- Observer，代理对象，定义属性的getter setter并闭包引用deps，child observer
+- Watcher，观察者，用于观察表达式变化，触发依赖收集
 
 #### 4、 Vue 的响应式的原理
 
