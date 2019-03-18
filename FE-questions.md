@@ -45,8 +45,9 @@ xhr.send(null);
 - 二分查找
 - 树的翻转（左旋右旋）
 - reduce 模拟 map
+
   ```javascript
-  //reduce模拟map
+  // reduce 模拟 map
   Array.prototype.map = function(fn) {
     return this.reduce(function(acc, cur) {
       acc.push(fn(cur));
@@ -54,3 +55,6 @@ xhr.send(null);
     }, []);
   };
   ```
+
+  - 树的左右视图
+  - sendRequest

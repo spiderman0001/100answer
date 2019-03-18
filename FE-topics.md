@@ -1,22 +1,23 @@
 # 前端技能
 
-### JS
+## JS
 
-#### 1、闭包机制及其用处
+### 1、闭包机制及其用处
 
 - 函数可以访问其声明时作用域内的变量
 - 创建私有变量
 - 模块化
+- 可能会造成内存长时间得不到释放
 
-#### 2、this 以及如何改变 this 指向
+### 2、this 以及如何改变 this 指向
 
 - 严格模式 undefined
 - 函数调用(global)，方法调用(object)
 - 事件回调(触发事件的 DOM 对象)
 - bind, apply, call
-- 箭头函数的 this 指向
+- 箭头函数的 this 指向声明时的作用域
 
-#### 3、基本类型与引用类型及相互转化
+### 3、基本类型与引用类型及相互转化
 
 基本类型
 
@@ -34,47 +35,57 @@
 - 通过 instanceOf 判断对象是否是某个构造器的实例
 - null 表示值为空，undefined 表示未定义或值为 undefined
 
-#### 4、变量作用域机制
+### 4、变量作用域机制
 
 - 全局作用域
--函数作用域
+- 函数作用域
 - 块级作用域 let, const , with, try catch
-- 变量声明提升
+- 变量/函数声明提升
 - 逐级访问，未找到会抛异常
 
-#### 5、继承与原型链
+### 5、继承与原型链
 
 - 继承的几种方式
-
 - {} 的原型是 Object.prototype
 - Object 的原型是 Function.prototype
 - Function 的原型是 Function.prototype
 - Function.prototype 的原型是 Object.prototype
 - Object.prototype 的原型是 null
 - 如何访问一个对象的原型？Object.getPrototypeOf
-- 如何判断一个属性是来自对象本身还是原型
-- hasOwnProperty 一定能访问么
+- 如何判断一个属性是来自对象本身还是原型? hasOwnProperty
+- hasOwnProperty 一定能访问么? 不一定，原型是null的普通对象没有
 
-#### 6、 正则表达式
+### 6、 正则表达式
 
-- 如何创建一个正则表达式
+- 如何创建一个正则表达式？字面量，构造器
 - 正则表达式对象是何时构建出来的
-- 有哪些 flag，分别是如何工作的
+- 有哪些 flag，分别是如何工作的 /mgiyu
 - 配合正则使用的方法有哪些，场景与性能 (split, replace, match, search, exec, test)
 - 贪婪模式，如何开启(\*, +, {1, })
 - 分组()，具名分组(?<>)，非捕获分组(?:) ，正向前瞻(?=)与负向前瞻(?!)
 - [介绍](https://juejin.im/post/5965943ff265da6c30653879)
 
-#### 7、EventLoop & 异步机制（Node、Browser）
+### 7、EventLoop & 异步机制（Node、Browser）
 
 - 浏览器异步机制
 - 常用异步函数及执行时机
+  - Promise //microTask
+  - MutationObsever //microTask
+  - setTimeout //macroTask
+  - setInterval //macroTask
+  - setImmediate // check phase
+  - process.nextTick //microTask
+  - messageChannel callback //microTask
+  - Vue.nextTick // leverage microTask
+  - requestAnimationFrame
+  - async/await
 - [Node 的 EventLoop](https://github.com/nodejs/nodejs.org/blob/master/locale/en/docs/guides/event-loop-timers-and-nexttick.md)
 
 - setImmediate 与 process.nextTick
 - [介绍](https://github.com/creeperyang/blog/issues/21)
+- [一篇文章教会你Event loop——浏览器和Node](https://segmentfault.com/a/1190000013861128)
 
-#### 8、Callback & Promise & Async/Await
+### 8、Callback & Promise & Async/Await
 
 - react props callback this 指向
 - Promise 对象及其用处
@@ -85,7 +96,7 @@
 - 如何 await 两个并行异步任务
 - Async/Await 异常处理
 
-#### 9、ES6、ES7、ESNext
+### 9、ES6、ES7、ESNext
 
 - Symbol
 - let，const
@@ -108,7 +119,7 @@
 - 写一个类，使其实例拥有多个类的的属性和方法。（模拟多重继承）
 - 类的静态属性和静态方法，是否可以继承
 
-#### 10、函数式编程
+### 10、函数式编程
 
 - 纯函数与副作用的概念
 -  柯里化
@@ -117,7 +128,7 @@
 - 高阶函数 map, reduce
 - 常用的函数式编程的库 lodash/fp
 
-#### 11、Node
+### 11、Node
 
 - node 模块查找机制与加载，模块缓存
 - 如何读取环境变量与运行参数
@@ -133,11 +144,13 @@
 - 子进程与进程通信 -如何创建子进程
 - cluster 工作机制
 - Koa & Express 中间件模型与工作机制
+  - Koa中间件是个async function, 以next()方式调用，洋葱模型，所有中间件代码执行完毕后才会发送响应。
+  - Express中间件
 - Node 应用 APM
 - CLI 编写
 - [element node interview](https://github.com/ElemeFE/node-interview)
 
-#### 12、设计模式
+### 12、设计模式
 
 - 单例
 - 观察者
@@ -149,7 +162,7 @@
 - 装饰者模式
 - MVC, MVP, MVVM 的区别，双向绑定与单向数据流的优缺点
 
-#### 13、模块化
+### 13、模块化
 
 - 自动采用严格模式
 
@@ -180,32 +193,32 @@ arguments不会自动反映函数参数的变化
 - CommonJS 模块的循环加载只输出已执行的部分
 - ESM 循环引用需要自己保证
 
-#### 14、其他
+### 14、其他
 
 - TypeScript
 - lodash 部分函数的实现
 - JSON
 
-### CSS
+## CSS
 
-#### 1、盒模型
+### 1、盒模型
 
 - padding, content, margin, border
 - width
 - box-sizing
 
-#### 2、选择器
+### 2、选择器
 
 - 常用选择器及优先级
 - 伪类选择器
 - 常用选择器组合（猫头鹰选择器解决首尾分割线），grid 中间分割线
 
-#### 3、伪类 & 伪元素
+### 3、伪类 & 伪元素
 
 - 使用场景
 - content: attr()
 
-#### 4、CSS 单位
+### 4、CSS 单位
 
 - rem, em, px, 纯数字，百分比
 - vw, vh
@@ -213,7 +226,7 @@ arguments不会自动反映函数参数的变化
 - line-height rem, em, px, 纯数字，百分比相对值
 - font-size rem, em, px, 纯数字，百分比相对值
 
-#### 5、Display
+### 5、Display
 
 - block
 - inline-block
@@ -222,19 +235,19 @@ arguments不会自动反映函数参数的变化
 - grid
 - table
 
-#### 6、vertical-align
+### 6、vertical-align
 
 - 与 inline 的关系
 - middle， bottom, top, 1px
 
-#### 7、定位
+### 7、定位
 
 - static, relative, absolute, fixed, sticky 参考点及副作用
 - 如何判断浏览器是否原生支持 sticky
 - sticky 的 polyfill
 - ios UIWebview 键盘弹出 fixed 失效问题
 
-#### 8、Flex 布局
+### 8、Flex 布局
 
 - 多栏动态布局
 - 类 grid 布局
@@ -242,19 +255,19 @@ arguments不会自动反映函数参数的变化
 - 空间分配与对齐
 - flex 布局下的超出省略
 
-#### 9、浮动
+### 9、浮动
 
 - float 值与表现
 - 副作用
 - 清除浮动
 
-#### 10、Grid
+### 10、Grid
 
 - 原生 grid 布局
 - 类 bootstrap 栅格化实现
 - grid 组件实现
 
-#### 11、响应式布局 & 自适应布局
+### 11、响应式布局 & 自适应布局
 
 - flexible
 - vw, vh
@@ -262,7 +275,7 @@ arguments不会自动反映函数参数的变化
 - 百分比
 - 主题皮肤实现
 
-#### 12、Transform，Transition，Animation
+### 12、Transform，Transition，Animation
 
 - 变换 translate, rotate
 - 变形 skew scale perspective
@@ -272,18 +285,18 @@ arguments不会自动反映函数参数的变化
 - timing-function 与贝塞尔曲线
 - keyframes, delay, loop, duration, fill-mode, play-state, iteration-count, direction
 
-#### 13、z-index
+### 13、z-index
 
 - 层叠关系确定
 - 与定位关系
 - 如何实现永远在最上层的模态框
 
-#### 14、背景与渐变
+### 14、背景与渐变
 
 - background 属性的值有哪些，分别控制什么
 - 线性渐变与径向渐变
 
-#### 15、文本与字体
+### 15、文本与字体
 
 - font 查找规则
 - 自定义字体
@@ -294,7 +307,7 @@ arguments不会自动反映函数参数的变化
 - word-break
 - text-overflow
 
-#### 16、 其他
+### 16、 其他
 
 - iPhone X 刘海兼容
 - 1px 边框实现
@@ -313,9 +326,9 @@ arguments不会自动反映函数参数的变化
 - 多栏布局
 - 水平垂直居中
 
-### HTML
+## HTML
 
-#### 1、常用标签
+### 1、常用标签
 
 - 块级标签， 内联标签，可替换标签
 - link, head, meta, style, script， body 标签
@@ -327,11 +340,11 @@ arguments不会自动反映函数参数的变化
 - 语义化标签
 - [标签列表](http://www.w3school.com.cn/tags/index.asp)
 
-#### 2、样式覆盖顺序
+### 2、样式覆盖顺序
 
 - 选择器优先级相同的情况下 inline > style > link
 
-#### 3、HTML DOM API
+### 3、HTML DOM API
 
 - document 对象
 - scrollingElement
@@ -344,14 +357,14 @@ arguments不会自动反映函数参数的变化
 - window
 - 操作 DOM 常用方法
 
-#### 4、SVG
+### 4、SVG
 
 - path, shape, rect 的概念
 - fill, stroke
 - 动画
 - svg 图标的优势
 
-#### 5、Form
+### 5、Form
 
 - input type
 - button type
@@ -359,7 +372,7 @@ arguments不会自动反映函数参数的变化
 - 表单校验， 阻止提交
 - 如何设计表单校验工具类以满足复合校验
 
-#### 6、LocalStorage， sessionStorage, Cookie, indexedDB
+### 6、LocalStorage， sessionStorage, Cookie, indexedDB
 
 - 区别于使用场景
 - 跨域
@@ -368,20 +381,21 @@ arguments不会自动反映函数参数的变化
 - Cookie http only
 - Cookie 跨域携带 withCredentials
 
-#### 7、跨域与 CORS
+### 7、跨域与 CORS
 
-- 同源策略
-- jsonp 原理
-- Image ping
-- iframe 跨域，document.domain
+- 同源策略: 协议，域名，端口必须相同
+- jsonp 原理： 动态创建script //get请求，需要后端配合
+- Image ping：动态创建img //get，无法处理响应
+- window.name：window.name在页面与子页面间共享
+- iframe 跨域：document.domain，location.hash with onhashchange;
 - postMessage
 - CORS 的原理与设置
 - CORS 简单请求与非简单请求的处理
 - CORS 下的 301
-- CORS 下的脚本异常捕获
+- CORS 下的脚本异常捕获，crossorigin="anonymous"
 - 服务端代理跨域
 
-#### 8、Web Worker
+### 8、Web Worker
 
 - 运行原理，使用场景
 - 并行与死锁控制
@@ -389,13 +403,13 @@ arguments不会自动反映函数参数的变化
 - service worker 的生命周期与能力
 - PWA
 
-#### 9、缓存与离线化
+### 9、缓存与离线化
 
 - HTTP Cache 策略
 - Application Cache (已废弃)
 - 基于 service worker 的缓存控制策略
 
-#### 10、事件机制
+### 10、事件机制
 
 - 事件的阶段
 - event target, event currentTarget
@@ -406,7 +420,7 @@ arguments不会自动反映函数参数的变化
 - 自定义事件
 - 浏览器事件（onload, domContentLoaded, domInteractive）
 
-#### 11、其他
+### 11、其他
 
 - new 创建对象的经历的几个步骤
 - 图片上传
@@ -429,9 +443,9 @@ arguments不会自动反映函数参数的变化
 - Electron
 - FMP, TTFB, TTL, TTI 的衡量
 
-### CS 基础与算法
+## CS 基础与算法
 
-#### 1、HTTP 协议
+### 1、HTTP 协议
 
 - 常用状态码
 
@@ -536,7 +550,7 @@ Cookie：服务器接收到的Cookie信息
   - 重定向
   - 应用向认证中心查询用户信息
 
-#### 2、TCP
+### 2、TCP
 
 - 特点
   - 面向连接
@@ -566,12 +580,12 @@ Cookie：服务器接收到的Cookie信息
 - 流量控制
   - 基于滑动窗口
 
-#### 3、IP
+### 3、IP
 
 - IP 地址段：A B C 类，局域网段，本地回环测试
 - IPv6：64 位
 
-#### 4、DNS 与 CDN
+### 4、DNS 与 CDN
 
 - 域名解析过程
   - 递归查询
@@ -584,7 +598,7 @@ Cookie：服务器接收到的Cookie信息
   - 缓存控制与回源策略
   - 节点覆盖
 
-#### 5、网络安全
+### 5、网络安全
 
 - XSS（跨站脚本攻击）
 
@@ -608,7 +622,7 @@ Cookie：服务器接收到的Cookie信息
   - 劫持用户 cookie 或 token 等认证信息假冒用户进行攻击
   - cookie http only， 多重鉴权，token 过期机制，HTTPS
 
-#### 5、 常用数据结构
+### 5、 常用数据结构
 
 - 栈：定义，创建
 - 队列 ：定义，创建， 进队，出队
@@ -620,7 +634,7 @@ Cookie：服务器接收到的Cookie信息
 - B+ 树，红黑树
 - 优先队列
 
-#### 5、 常见算法
+### 5、 常见算法
 
 - 排序：冒泡，选择，快排，堆排， 归并排序，桶排
 - 二叉树遍历过程
@@ -629,7 +643,7 @@ Cookie：服务器接收到的Cookie信息
 - 大数相加
 - leetcode~
 
-#### 6、 操作系统
+### 6、 操作系统
 
 - 进程，线程，管程
 - Linux 进程通信（IPC）
@@ -640,9 +654,9 @@ Cookie：服务器接收到的Cookie信息
 - Shell 脚本与 CLI
 - 包管理（rpm, dnf, apt-get, brew）
 
-### 框架
+## 框架
 
-#### 1、 Vue 实例的创建过程
+### 1、 Vue 实例的创建过程
 
 - 合并选项（默认与自定义）
 - 初始化实例属性（生命周期，事件，渲染）
@@ -653,7 +667,7 @@ Cookie：服务器接收到的Cookie信息
 - created Hook
 - 挂载
 
-#### 2、 Vue 组件的生命周期钩子
+### 2、 Vue 组件的生命周期钩子
 
 - create
 - update
@@ -661,7 +675,7 @@ Cookie：服务器接收到的Cookie信息
 - destroy
 - 触发顺序，由内层组件到外层依次触发
 
-#### 3、 Vue 是如何做到依赖收集的
+### 3、 Vue 是如何做到依赖收集的
 
 - 通过为每个需要响应式的属性简历getter setter, 在getter中收集放置在Dep对象中，在setter的时候触发
 - 定义后通过触发一次getter收集
@@ -673,154 +687,154 @@ Cookie：服务器接收到的Cookie信息
 - Observer，代理对象，定义属性的getter setter并闭包引用deps，child observer
 - Watcher，观察者，用于观察表达式变化，触发依赖收集
 
-#### 4、 Vue 的响应式的原理
+### 4、 Vue 的响应式的原理
 
 - Object.defineProperty
 - getter 收集依赖 setter 触发依赖
 - 发布订阅模式
 - Vue 3 Proxy
 
-#### 5、 Vue 的响应式的缺陷，解决办法
+### 5、 Vue 的响应式的缺陷，解决办法
 
 - 需要声明属性值，新增无法识别
 - 无法识别所有数组API
 - Vue.set，this.$set
 
-#### 6、 Vue 组件的设计原则与复用策略
+### 6、 Vue 组件的设计原则与复用策略
 
 - 功能单一
 - 样式功能可配置
 - Mixin
 - extends
 
-#### 7、 Vue 组件的通信机制，跨级非兄弟组件如何通信
+### 7、 Vue 组件的通信机制，跨级非兄弟组件如何通信
 
 - 父子 props, event
 - 跨级 event bus 或者 Rxjs
 - 复杂状态 Vuex
 - provide / inject
 
-#### 8、 Vue Transition 原理及应用
+### 8、 Vue Transition 原理及应用
 
 - css transition 动态增添 class
 - js transition hook function
 - 配合 animate.css 或者 JS 动画库实现复杂动效。
 
-#### 9、 Vue计算属性与 watch
+### 9、 Vue计算属性与 watch
 
 - 计算属性应该是纯函数（setter 除外）
 - watch 可以改变 state 或者执行操作
 - 底层都是通过getter/setter实现。
 
-#### 10、 Vue插槽机制
+### 10、 Vue插槽机制
 
 - default slot
 - named slot
 - scoped slot
 
-#### 11、 Vue 动态组件
+### 11、 Vue 动态组件
 
 - is 判断
 - 异步加载注册
 - 逻辑容器组件控制视图组件渲染
 
-#### 12、 Vue directive、mixin、filter, extends 的作用
+### 12、 Vue directive、mixin、filter, extends 的作用
 
 - 指令
 - 混合
 - 过滤器是纯函数，可以管道级联调用
 - 继承其他组件
 
-#### 13、 Vue SSR
+### 13、 Vue SSR
 
 - 服务端渲染流程：路由匹配 -> 组件fetch data 填充 state -> renderer 渲染出html结构 -> 发送给客户端渲染
 - 如何编写同构代码（注意尽可能使用node browser shared api）
 
-#### 14、 React 的特点
+### 14、 React 的特点
 
 - 状态机
 - 虚拟 DOM
 - 函数式
 - JSX
 
-#### 15、React Class Based Component 的好处
+### 15、React Class Based Component 的好处
 
 - 易继承扩展，复用度高
 - React constructor 里面为什么要加 super(props)：React组件实例属性是由React的构造函数添加的。
 
-#### 16、 React 组件生命周期 Hook
+### 16、 React 组件生命周期 Hook
 
 - componentWillxxx
 - componentShouldxxx
 - componentDidxxx
 - React Hooks
 
-#### 17、 React 如何触发渲染
+### 17、 React 如何触发渲染
 
 - setState, 异步, 合并与覆盖
 
-#### 18、 React 合成事件与事件处理
+### 18、 React 合成事件与事件处理
 
 - 事件代理机制
 
-#### 19、 React 组件的组合与继承
+### 19、 React 组件的组合与继承
 
 - extends 用于集成，this 在 super(pros)才可用
 - 组合：组件通过逻辑判断渲染哪个或哪些组件
 
-#### 20、 React PureComponent 与 Component 的区别
+### 20、 React PureComponent 与 Component 的区别
 
 - setState 时只做浅比较
 - PureComponent 不建议有 state
 - PureComponent 性能能好，通常用于容器逻辑组件，无状态组件 
 
-#### 21、 React 组件 defaultProps 与 propTypes
+### 21、 React 组件 defaultProps 与 propTypes
 
 - 组件 props 类型校验与默认值
 
-#### 22、 React 组件的通信
+### 22、 React 组件的通信
 
 - props（值与 function 回调，注意回调中对的 this）
 - Context API
 - Redux
 
-#### 23、 React 组件的渲染性能优化
+### 23、 React 组件的渲染性能优化
 
 - componentShouldUpdate 中进行判断是否需要渲染
 - 尽量合并 setState 操作
 - 指定 key 以复用组件
 
-#### 24、 React Context API
+### 24、 React Context API
 
 - 组件共享全局数据（状态），类似于 Vue provide
 
-#### 25、 React Hooks API
+### 25、 React Hooks API
 
 - 实验特性
 - 解决 Functional Components 的生命周期和逻辑复用问题
 - 函数式，配合rxjs等
 
-#### 26、 React 高阶组件及场景
+### 26、 React 高阶组件及场景
 
 - 接收组件，返回新组件的函数
 - 权限校验
 - 组件定制
 - 通过 props 生成新组件而不是改传入的组件
 
-#### 27、VDom 的原理
+### 27、VDom 的原理
 
 - createHtmlFragment 一次插进 dom 减少 dom 操作
 - 内存中维护一个与 Dom 树对应的树结构， 操作只更改 vdom，需要渲染才将差异部分渲染出来
 - 不依赖实际 DOM，却可以生成 DOM
 - 可用于服务端渲染或者非web渲染（RN）
 
-#### 28、VDom 的 Diff 算法
+### 28、VDom 的 Diff 算法
 
 - [Virtual DOM 背后的秘密（Diff 篇）](https://zhuanlan.zhihu.com/p/36500459)
 - [Vue VDOM](<https://github.com/answershuto/learnVue/blob/master/docs/VirtualDOM%E4%B8%8Ediff(Vue%E5%AE%9E%E7%8E%B0).MarkDown>)
 - [Vue 虚拟 DOM 原理](https://cloud.tencent.com/developer/article/1006029)
 
-#### 29、Redux 思想与最佳实践
+### 29、Redux 思想与最佳实践
 
 - 中间件
 - store 的传递过程
@@ -828,20 +842,20 @@ Cookie：服务器接收到的Cookie信息
 - reducers
 - 单一数据源（store）
 
-#### 30、Vue.nextTick实现原理
+### 30、Vue.nextTick实现原理
 
 - async deferring task queue
 - micro task机制（Promise -> MutationObserver -> setTimeout fallback）
 - vm.$next 与 Vue.nextTick是同一个函数
 
-### 前端工程
+## 前端工程
 
-#### Gulp
+### Gulp
 
 - 流操作
 - 任务
 
-#### Webpack
+### Webpack
 
 - Webpack 配置
 - 构建过程中的对象
@@ -852,22 +866,24 @@ Cookie：服务器接收到的Cookie信息
 - Code Splitting
 - 优化手段
 
-#### Babel
+### Babel
 
 - AST
 - preset
+  - babel-preset-env
+  - polyfill
 - plugins
 
-#### ESLint
+### ESLint
 
 - rules
 - parser setting
 
-#### StyleLint
+### StyleLint
 
 - rules
 
-#### HTTP 库，Util 库，组件库等。
+### HTTP 库，Util 库，组件库等。
 
 - jQuery
 - Axios
@@ -884,12 +900,12 @@ Cookie：服务器接收到的Cookie信息
 - query-string
 - anime.js (动画)
 
-#### Post-CSS
+### Post-CSS
 
 - cssnano
 - autoprefixer
 
-#### 工程框架
+### 工程框架
 
 - utils & helpers
 - 构建配置
@@ -905,18 +921,18 @@ Cookie：服务器接收到的Cookie信息
 - Node 日志处理
 - Node 进程运行统计分析工具
 
-#### NPM & Yarn
+### NPM & Yarn
 
 - 版本管理策略
 - 抽包与发包
 - 私有 registry 与安装加速
 
-#### 测试
+### 测试
 
 - Unit Test：Jest， Mocha，覆盖率
 - E2E Test：Phantomjs，Puppeteer
 
-#### 前端发布 CI
+### 前端发布 CI
 
 - 代码克隆
 - 包安装
