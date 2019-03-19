@@ -426,7 +426,6 @@ arguments不会自动反映函数参数的变化
 - 图片上传
 - 空格渲染策略
 - defer, async
-- 转义与 XSS
 - Audio/Video
 - Web Component
 - WebAssembly
@@ -600,10 +599,13 @@ Cookie：服务器接收到的Cookie信息
 
 ### 5、网络安全
 
-- XSS（跨站脚本攻击）
-
-  - 表单中加入 html script 标签执行危险操作
-  - 防御，表单字段转义
+- XSS（cross site script跨站脚本攻击）
+  - 利用模板引擎，开启html转义
+  - 避免内联事件
+  - 避免innerHtml使用
+  - 输入过滤（HTML转义、onclick 等可以执行 js 的地方校验scheme）
+  - 设置 Content Security Policy
+  - Http Only cookie
 
 - SQL 注入
   - 表单中加入 SQL 操作语句
@@ -618,9 +620,22 @@ Cookie：服务器接收到的Cookie信息
   - 持续高 QPS 击垮应用，无法响应正常用户请求
   - 反爬，限流
 
-- CSRF（跨站请求伪造）
-  - 劫持用户 cookie 或 token 等认证信息假冒用户进行攻击
-  - cookie http only， 多重鉴权，token 过期机制，HTTPS
+- CSRF（Cross Site Request Forgery 跨站请求伪造）的攻击流程
+  - 访问a.com，保留登录凭证 -> 访问b.com -> b.com 向a.com发送请求，浏览器会默认带上a.com的cookie，从而执行了危险操作。
+  - 攻击一般发生在第三方网站，而不是被攻击的网站。
+  - 攻击冒充被攻击者进行操作，而不是直接窃取数据。
+  - 整个过程并不能获取受害者的登录凭证，仅仅是冒用。
+  - 跨站请求伪造可以利用各种方式：图片URL，超链接，CORS，Form提交等。部分请求可以嵌入在第三方论坛，难以预防。
+  - 通常跨域
+
+- CSRF的预防
+  - 服务端同源检测阻止不明外域访问（referer， origin等 header字段）
+  - SameSite Cookie（兼容性略差）
+  - 提交时必须要有本域才可以获取的信息（CSRF Token)，ajax请求和form表单请求均增加该token作为字段用于校验。
+  - 双重Cookie验证，cookie与url均增加token字段，后端做校验。
+
+- 运营商劫持
+  - https
 
 ### 5、 常用数据结构
 
@@ -661,8 +676,8 @@ Cookie：服务器接收到的Cookie信息
 - 合并选项（默认与自定义）
 - 初始化实例属性（生命周期，事件，渲染）
 - beforeCreate Hook
-- 初始化出入
-- 初始化组件状态（props，methods, data, computed, watch）
+- 初始化注入
+- 初始化组件状态（props => methods => data => computed => watch）
 - 初始化provide
 - created Hook
 - 挂载
@@ -725,6 +740,7 @@ Cookie：服务器接收到的Cookie信息
 - 计算属性应该是纯函数（setter 除外）
 - watch 可以改变 state 或者执行操作
 - 底层都是通过getter/setter实现。
+- 计算属性使用了Watcher，在通过对express fn求值的时候被收集到依赖中，当相关数据变化，触发重新求值。
 
 ### 10、 Vue插槽机制
 
@@ -740,9 +756,9 @@ Cookie：服务器接收到的Cookie信息
 
 ### 12、 Vue directive、mixin、filter, extends 的作用
 
-- 指令
-- 混合
-- 过滤器是纯函数，可以管道级联调用
+- 指令：操作dom
+- 混合：代码复用
+- 过滤器：是纯函数，可以管道级联调用
 - 继承其他组件
 
 ### 13、 Vue SSR

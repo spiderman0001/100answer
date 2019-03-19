@@ -6,6 +6,11 @@
 
 - url 参数提取
 
+- 用generator 模拟async/await
+  - 迭代generator执行后的 iterator，在上一个异步结束之后触发next();
+  - thunk函数（回调），promise（then回调）
+  - co
+
 - [LazyMan](https://www.jianshu.com/p/f1b7cb456d37)
 
 - 写一个符合 Promise A+的 Promise 模块
@@ -42,19 +47,28 @@ xhr.send(null);
 
 - 写一个深拷贝函数
   [demo](./demo/deepClone.js)
-- 二分查找
+- 二分查找(BST)
 - 树的翻转（左旋右旋）
 - reduce 模拟 map
 
   ```javascript
   // reduce 模拟 map
   Array.prototype.map = function(fn) {
-    return this.reduce(function(acc, cur) {
-      acc.push(fn(cur));
+    return this.reduce(function(acc, ...args) {
+      acc.push(fn(...args));
       return acc;
     }, []);
   };
   ```
 
-  - 树的左右视图
-  - sendRequest
+- 树的左右视图
+  - DFS
+  - BFS
+
+- sendRequest(urls, max, callback)
+  - 并行
+  - 串行
+- Vue computed原理
+
+- JS函数的参数是传值还是传引用？
+  - 传值(形式参数重新赋值，不影响被传入的变量的值);
