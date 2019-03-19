@@ -9,30 +9,29 @@ function fetch(url) {
 function sendRequest(urls, max, callback) {
   let count = 0;
   let now = 0;
-  if (urls.length <= max) {
-    return Promise.all(urls.map(url => fetch(url))).then(callback)
-  }
+  let done = false;
 
-  const addRequest = () => {
-    // console.log(count, now);
-    if(count < max && now !== urls.length - 1) {
-      now += 1;
-      count += 1;
-      fetch(urls[now]).then(() => {
-        count -= 1;
-        addRequest()
-      })
-    } else {
-      callback()
-    }
-  }
-
-  for(; count < max; count++) {
+  const send = () => {
     fetch(urls[now]).then(() => {
       count -= 1;
       addRequest()
     });
     now += 1;
+    count += 1;
+  }
+
+  const addRequest = () => {
+    if(done) return;
+    if(count < max && now !== urls.length) {
+      send()
+    } else {
+      done = true;
+      callback()
+    }
+  }
+
+  for(; count < Math.min(max, urls.length);) {
+    send()
   }
 }
 

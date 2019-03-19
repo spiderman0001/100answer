@@ -13,7 +13,6 @@ function sendRequest(urls, callback) {
     if(now !== urls.length - 1) {
       now += 1;
       fetch(urls[now]).then(() => {
-        // if (now == 3) return;
         addRequest()
       })
     } else {
