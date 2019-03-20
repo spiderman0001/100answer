@@ -71,4 +71,53 @@ xhr.send(null);
 - Vue computed原理
 
 - JS函数的参数是传值还是传引用？
-  - 传值(形式参数重新赋值，不影响被传入的变量的值);
+  - 传值
+
+- 有序链表合并
+- backbone怎么实现的
+  WTF?
+- defineproperty 和proxy的区别
+- express koa路由实现
+- gc方式，怎么判断循环应用
+- web worker
+- 事件循环
+- 浏览器的渲染过程
+- 写类似三栏布局的css
+- vdom的结构
+- 垂直居中
+
+- margin可以取负值 margin 取值百分比是相对于谁，padding呢
+
+- 随便写个排序算法
+
+- 事件冒泡
+- 什么事件没有捕获和冒泡
+
+- js的流
+- pipe有什么用
+- koa中间件
+
+- 实现一个bind
+
+- nodejs介绍 事件循环
+
+- 两个排序好的数组合并排序
+
+- 判断类型
+- promise
+- event loop
+- 浏览器输入url
+- 缓存参数
+- 组件willmount和didmount顺序和时间
+- webpack拆包机制
+- 端到端时间
+- react和vue的区别
+- let const
+- Map和Object的区别
+
+- 网络分层
+- tcp在哪一层
+- 为什么需求vuex redux
+
+- service worker
+- 设计一个打点的sdk
