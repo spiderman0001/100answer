@@ -51,10 +51,11 @@ class EventEmitter {
 const emitter = new EventEmitter();
 
 let count = 0;
-emitter.on('aa', (a) => {
+let handler = (a) => {
   count += 1;
   console.log('aa1', count, a);
-})
+}
+emitter.on('aa', handler)
 
 emitter.on('aa', (a) => {
   console.log('aa2', count, a);
@@ -63,6 +64,12 @@ emitter.on('aa', (a) => {
 emitter.once('bb', (c) => {
   console.log('bb', count, c);
 })
+
+emitter.emit('aa', 1)
+emitter.emit('aa', 3)
+emitter.emit('bb', 4)
+emitter.emit('bb')
+emitter.off('aa', handler);
 
 emitter.emit('aa', 1)
 emitter.emit('aa', 3)
