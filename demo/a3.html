@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul>
+    <li>asdf</li>
+  </ul>
+  <script>
+    body = document.body
+    ul = document.querySelector('ul')
+    li = document.querySelector('li')
+    body.addEventListener('click', () => console.log('1111'), true)
+
+    ul.addEventListener('click', () => console.log('2222'), false)
+    // li.addEventListener('click',()=>console.log('3333'))
+    li.addEventListener('click', (e) => {
+      e.stopPropagation()
+      console.log('4444')
+    }, true)
+  </script>
+</body>
+
+</html>
